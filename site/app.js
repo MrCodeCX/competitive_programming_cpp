@@ -8,7 +8,6 @@ const state = {
 
 const els = {
 	statTotal: document.getElementById("statTotal"),
-	statRunnable: document.getElementById("statRunnable"),
 	resultCount: document.getElementById("resultCount"),
 	searchInput: document.getElementById("searchInput"),
 	divisionFilters: document.getElementById("divisionFilters"),
@@ -249,7 +248,6 @@ async function init() {
 	state.sources = sources;
 	state.selected = solutions[0];
 	els.statTotal.textContent = String(solutions.length);
-	els.statRunnable.textContent = String(solutions.filter((solution) => solution.sample && solution.js).length);
 
 	els.searchInput.addEventListener("input", (event) => {
 		state.query = event.target.value;

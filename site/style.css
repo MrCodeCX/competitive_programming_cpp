@@ -80,7 +80,7 @@ a {
 	grid-column: 1 / -1;
 	min-height: 118px;
 	display: grid;
-	grid-template-columns: minmax(420px, 1fr) auto minmax(460px, 0.95fr);
+	grid-template-columns: minmax(420px, 1fr) auto minmax(350px, 0.72fr);
 	gap: 18px;
 	align-items: center;
 	padding: 18px;
@@ -177,7 +177,7 @@ h3 {
 
 .stats {
 	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
+	grid-template-columns: repeat(3, minmax(0, 1fr));
 	gap: 8px;
 }
 
@@ -521,7 +521,7 @@ h3 {
 
 	.topbar {
 		min-height: 96px;
-		grid-template-columns: minmax(360px, 1fr) auto minmax(410px, 0.95fr);
+		grid-template-columns: minmax(360px, 1fr) auto minmax(310px, 0.72fr);
 		gap: 12px;
 		padding: 13px;
 	}
