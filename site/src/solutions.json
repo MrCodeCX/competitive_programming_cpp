@@ -1,0 +1,407 @@
+[
+  {
+    "id": "codeforces_div_2_round_299_problem_b",
+    "source": "codeforces/div_2/round_299/problem_b.cpp",
+    "problem": "Codeforces Round 299 (Div. 2), B - Tavas and SaDDas",
+    "link": "https://codeforces.com/contest/535/problem/B",
+    "summary": "Given a lucky number made only of digits 4 and 7, find its 1-based position\nin the increasing sequence of all lucky numbers.",
+    "solve": "Through permutations, all lucky numbers with k digits can be formed.\nTherefore, position(n) = count of lucky numbers with fewer digits + position within the k-digit group, where k = get_cypher(n).\n\nIf we analyze the k-digit lucky numbers in order:\n444 447 474 477 744 747 774 777, they strongly resemble the binary system:\n000 001 010 011 100 101 110 111. Their binary representation matches their\nposition among the k-digit lucky numbers + 1.\n\nThe sum of positions up to x digits is SUM 2^i (i: 1 -> (get_cypher(n) - 1)) = 1U << get_cypher(n) - 2.\n\nif(s[i] == '4') ret_bin = ret_bin << 1 + 0;\nelse ret_bin = ret_bin << 1 + 1;",
+    "js": "wasm/codeforces_div_2_round_299_problem_b.js"
+  },
+  {
+    "id": "codeforces_div_2_round_332_problem_d",
+    "source": "codeforces/div_2/round_332/problem_d.cpp",
+    "problem": "Codeforces Round 332 (Div. 2), D - Spongebob and Squares",
+    "link": "https://codeforces.com/contest/599/problem/D",
+    "summary": "Given x, find all grid dimensions n by m such that the total number of square\nsubrectangles in the grid is exactly x.",
+    "solve": "Squares range from size 1 to min_side and extend across max_side.\n\nIt is only necessary to analyze combinations with n < m, so total = analysis * 2.\n\nHorizontal square density: 1 + max_side - side = 1 + c_2 - side\nVertical square density: 1 + min_side - side = 1 + c_1 - side\n\nside 1 -> min_side\nSquares = SUM (1 + c_1 - side) * (1 + c_2 - side)\nSquares = SUM ((1+c_1)*(1+c_2) - (2+c_1+c_2)*side + side*side)\nSquares = (1+c_1)*(1+c_2)*c_1 - (2+c_1+c_2)*c_1*(1+c_1)/2 + c_1*(1+c_1)*(2*c_1+1)/6\nSquares = c_1*(1+c_1)*(1+3*c_2 -c_1)/6\n\nGet c_2 as a function of c_1 and squares.\nc_2 = (c_1 + (squares*6)/(c_1*(c_1+1)) - 1) / 3\nmin_c_1 = 1\nIt is not necessary to determine the maximum; it is enough to know it will be found in O(n^(1/3)).\nIterate while c_1 < c_2 (c_1 = n, c_2 = m for n <= m).",
+    "js": "wasm/codeforces_div_2_round_332_problem_d.js"
+  },
+  {
+    "id": "codeforces_div_2_round_357_problem_b",
+    "source": "codeforces/div_2/round_357/problem_b.cpp",
+    "problem": "Codeforces Round 357 (Div. 2), B - Economy Game",
+    "link": "https://codeforces.com/contest/681/problem/B",
+    "summary": "Given n, determine whether it can be represented as a non-negative sum of\n1234567, 123456, and 1234.",
+    "solve": "With many coefficients, it is better to iterate a DP array over every possible formation in O(n).\nWith few coefficients, it is better to iterate over them and check the remainder against the last one in O(A*B).",
+    "js": "wasm/codeforces_div_2_round_357_problem_b.js"
+  },
+  {
+    "id": "codeforces_div_2_round_511_problem_a",
+    "source": "codeforces/div_2/round_511/problem_a.cpp",
+    "problem": "Codeforces Round 511 (Div. 2), A - Little C Loves 3 I",
+    "link": "https://codeforces.com/contest/1047/problem/A",
+    "summary": "Given n, split it into three positive integers whose sum is n and none of\nthem is divisible by 3.",
+    "solve": "Aim for one maximum number, keep the rest minimal, and distribute the remainder across all of them.\nnew_n = (n / 3) * 3\nres = n % 3\na = new_n; b = 0; c = 0\n\nNotice that new_n will always be greater than or equal to 3.\nDistribute the remainder among the 3 numbers so none of them is a multiple of 3.\n\nThe real question is how to distribute the remainder.\nExample when distributing 0:\n-2 1 1\nExample when distributing 1:\n-1 1 1\nExample when distributing 2:\n-1 2 1",
+    "js": "wasm/codeforces_div_2_round_511_problem_a.js"
+  },
+  {
+    "id": "codeforces_div_2_round_672_problem_b",
+    "source": "codeforces/div_2/round_672/problem_b.cpp",
+    "problem": "Codeforces Round 672 (Div. 2), B - Rock and Lever",
+    "link": "https://codeforces.com/contest/1420/problem/B",
+    "summary": "Count pairs of indices (i, j), i < j, such that a[i] & a[j] is greater than\nor equal to a[i] xor a[j].",
+    "solve": "Numbers satisfy the condition exactly when they have the same most significant\nbit. Count how many numbers belong to each bit-length group, then add\ncount * (count - 1) / 2 for every group.\nOrder does not matter because the operation and condition are symmetric. For\nnumbers with the same number of bits, both have the same leading 1 bit, so the\nbitwise AND keeps that high bit while XOR cannot exceed it. Numbers from\ndifferent bit-length groups do not satisfy the condition.",
+    "js": "wasm/codeforces_div_2_round_672_problem_b.js"
+  },
+  {
+    "id": "codeforces_div_2_round_676_problem_a",
+    "source": "codeforces/div_2/round_676/problem_a.cpp",
+    "problem": "Codeforces Round 676 (Div. 2), A - XORwice",
+    "link": "https://codeforces.com/contest/1421/problem/A",
+    "summary": "Given a and b, choose x to minimize (a xor x) + (b xor x).",
+    "solve": "For each case, x can be analyzed bit by bit because changing one bit does not affect the next one.\nTo minimize the sum, each bit must be minimized independently.\nxxxx1 yyyy1 zzzzx -> x = 1\nxxxx1 yyyy0 zzzzx -> x = 1 or 0\nxxxx0 yyyy0 zzzzx -> x = 0\n\nTaking the second case as 0 gives x = (a & b).",
+    "js": "wasm/codeforces_div_2_round_676_problem_a.js"
+  },
+  {
+    "id": "codeforces_div_2_round_936_problem_a",
+    "source": "codeforces/div_2/round_936/problem_a.cpp",
+    "problem": "Codeforces Round 936 (Div. 2), A - Median of an Array",
+    "link": "https://codeforces.com/contest/1946/problem/A",
+    "summary": "For each test case, an array of n integers is given. For this problem, the\nmedian is the element at index (n - 1) / 2 after sorting the array in\nnon-decreasing order.\nIn one operation, any single element can be increased by 1. The goal is to\nfind the minimum number of operations needed to make the array median\nstrictly larger than its initial value.",
+    "solve": "Use nth_element to place the median in the same position it would have after\nsorting. To increase the median, every value equal to it from the median\nposition to the right must be increased at least once. The answer is how many\nof those median values appear in the array.",
+    "js": "wasm/codeforces_div_2_round_936_problem_a.js"
+  },
+  {
+    "id": "codeforces_div_2_round_940_problem_b",
+    "source": "codeforces/div_2/round_940/problem_b.cpp",
+    "problem": "Codeforces Round 940 (Div. 2), B - A BIT of a Construction",
+    "link": "https://codeforces.com/contest/1957/problem/B",
+    "summary": "For each test case, construct an array of n non-negative integers whose sum is\nexactly k. Among all valid arrays, the goal is to maximize the number of\n1 bits in the bitwise OR of all array elements. Any array that reaches that\nmaximum is accepted.",
+    "solve": "If n is 1, the only possible array is [k]. Otherwise, build sol with the same\nbinary length as k, but with the MSB as 0 and every lower bit as 1. For\nexample, if k is 128 (10000000 in binary), sol is 127 (01111111 in binary).\nThe second number is k - sol, and the rest is filled with zeroes.",
+    "js": "wasm/codeforces_div_2_round_940_problem_b.js"
+  },
+  {
+    "id": "codeforces_div_2_round_951_problem_a",
+    "source": "codeforces/div_2/round_951/problem_a.cpp",
+    "problem": "Codeforces Round 951 (Div. 2), A - Guess the Maximum",
+    "link": "https://codeforces.com/contest/1979/problem/A",
+    "summary": "For each test case, an array is given. We need choose an integer k such that\nevery subarray with length at least 2 has a maximum value greater than k. The\ngoal is to find the maximum possible k.",
+    "solve": "Any subarray with length at least 2 contains at least one adjacent pair.\nTherefore, the limiting case is the adjacent pair with the smallest maximum.\nIf min_pair_max is the minimum value among max(a[i], a[i + 1]), then k must\nbe strictly smaller than that value. So the answer is min_pair_max - 1.",
+    "js": "wasm/codeforces_div_2_round_951_problem_a.js"
+  },
+  {
+    "id": "codeforces_div_2_round_951_problem_c",
+    "source": "codeforces/div_2/round_951/problem_c.cpp",
+    "problem": "Codeforces Round 951 (Div. 2), C - Earning on Bets",
+    "link": "https://codeforces.com/contest/1979/problem/C",
+    "summary": "For each test case, there are n possible betting outcomes. If outcome i wins,\nevery coin placed on it is multiplied by k[i]. We need choose a positive\nnumber of coins for each outcome so that, no matter which outcome wins, the\npayout is strictly greater than the total number of coins placed. If no valid\ndistribution exists, print -1.",
+    "solve": "Let total be the sum of all placed coins. For every outcome i, we need\ncoins[i] * k[i] > total. A useful construction is to take the LCM of all k[i]\nand set coins[i] = LCM / k[i]. Then every possible payout is exactly LCM.\nThis works only if the total number of placed coins is smaller than LCM,\nwhich is equivalent to sum(LCM / k[i]) < LCM.",
+    "js": "wasm/codeforces_div_2_round_951_problem_c.js"
+  },
+  {
+    "id": "codeforces_div_2_round_951_problem_d",
+    "source": "codeforces/div_2/round_951/problem_d.cpp",
+    "problem": "Codeforces Round 951 (Div. 2), D - Fixing a Binary String",
+    "link": "https://codeforces.com/contest/1979/problem/D",
+    "summary": "For each test case, a binary string s of length n and an integer k are given.\nWe must choose p and apply exactly one operation: reverse the prefix of length\np, then move that reversed prefix to the end. The resulting string must be\nk-proper: its first k characters are equal, and every character differs from\nthe character k positions after it. If no valid p exists, print -1.",
+    "solve": "A k-proper binary string is formed by blocks of length k, where each block has\nequal characters and adjacent blocks have opposite characters. This solution\ntries to choose p by looking at the suffix that will stay at the front after\nthe operation and the reversed prefix that will be moved to the end. It counts\nthe final run of equal characters, searches for a compatible cut position, and\nthen verifies the produced string with the k-proper conditions. If no verified\ncut is found, the answer is -1.",
+    "js": "wasm/codeforces_div_2_round_951_problem_d.js"
+  },
+  {
+    "id": "codeforces_div_2_round_953_problem_a",
+    "source": "codeforces/div_2/round_953/problem_a.cpp",
+    "problem": "Codeforces Round 953 (Div. 2), A - Alice and Books",
+    "link": "https://codeforces.com/contest/1978/problem/A",
+    "summary": "For each test case, an array of n book values is given. We must split the\narray into two non-empty consecutive parts and maximize the sum of the last\nvalue of each part.",
+    "solve": "The last value of the second part is always a[n - 1]. To maximize the answer,\nchoose the split so that the last value of the first part is the maximum value\namong a[0], a[1], ..., a[n - 2]. Therefore, the answer is a[n - 1] plus the\nmaximum value before it.",
+    "js": "wasm/codeforces_div_2_round_953_problem_a.js"
+  },
+  {
+    "id": "codeforces_div_2_round_953_problem_b",
+    "source": "codeforces/div_2/round_953/problem_b.cpp",
+    "problem": "Codeforces Round 953 (Div. 2), B - New Bakery",
+    "link": "https://codeforces.com/contest/1978/problem/B",
+    "summary": "Bob sells n buns. Normally each bun costs a coins, but he may choose k buns\nfor a promotion, where the first promoted bun costs b, the next b - 1, and so\non. The remaining buns are sold at the normal price a. The goal is to maximize\nthe total profit.",
+    "solve": "Start from selling every bun at the normal price a. A promoted bun is useful\nonly while its promoted price is greater than a, so the number (k) of useful\npromoted buns is min(n, b - a). Add the extra profit from those promoted buns:\n(b - a) + (b - a - 1) + ... (b - a - (b - a - 1)) = k * (b - a) - k * (k - 1) / 2",
+    "js": "wasm/codeforces_div_2_round_953_problem_b.js"
+  },
+  {
+    "id": "codeforces_div_2_round_953_problem_d",
+    "source": "codeforces/div_2/round_953/problem_d.cpp",
+    "problem": "Codeforces Round 953 (Div. 2), D - Elections",
+    "link": "https://codeforces.com/contest/1978/problem/D",
+    "summary": "There are n election candidates and c undecided votes. Candidate 0 receives\nall undecided votes among the remaining candidates. For each candidate i, find\nthe minimum number of other candidates that must be removed so that candidate\ni becomes a winner.",
+    "solve": "If every candidate before i is removed, candidate i becomes the first\nremaining candidate and receives all undecided votes plus the votes of those\nremoved candidates. That value is prefix_sum[i] + c. If it is at least the\nmaximum vote count on the right, removing the i previous candidates is enough.\nOtherwise, one more removal is needed for the strongest candidate on the\nright. The only exception is a candidate that already wins without removing\nanyone, whose answer is 0.",
+    "js": "wasm/codeforces_div_2_round_953_problem_d.js"
+  },
+  {
+    "id": "codeforces_div_2_round_968_problem_a",
+    "source": "codeforces/div_2/round_968/problem_a.cpp",
+    "problem": "Codeforces Round 968 (Div. 2), A - Turtle and Good Strings",
+    "link": "https://codeforces.com/contest/2003/problem/A",
+    "summary": "For each test case, a string s is given. We need determine whether it can be\nsplit into at least two non-empty substrings t1, t2, ..., tk such that, for\nevery i < j, the first character of ti is different from the last character\nof tj.",
+    "solve": "The first substring always starts with s[0], and the last substring always\nends with s[n - 1]. If those characters are equal, the required condition\ncannot be satisfied. If they are different, splitting into two substrings is\nenough, so the answer is YES.",
+    "js": "wasm/codeforces_div_2_round_968_problem_a.js"
+  },
+  {
+    "id": "codeforces_div_2_round_968_problem_b",
+    "source": "codeforces/div_2/round_968/problem_b.cpp",
+    "problem": "Codeforces Round 968 (Div. 2), B - Turtle and Piggy Are Playing a Game 2",
+    "link": "https://codeforces.com/contest/2003/problem/B",
+    "summary": "Turtle and Piggy play on an array. On Turtle's turns, one element is replaced\nby the minimum of two chosen elements. On Piggy's turns, one element is\nreplaced by the maximum of two chosen elements. Both play optimally, and the\ngoal is to determine the final remaining value.",
+    "solve": "Turtle can remove the current minimum by choosing a pair that contains it,\nbecause the minimum remains and the other value disappears. Piggy can remove\nthe current maximum in the symmetric way by choosing a pair that contains it.\nIf the array is sorted, the removals become minimum, maximum, minimum,\nmaximum, and so on. Therefore, the final value is the middle value of the\nsorted array; for even n, it is the right-middle element.",
+    "js": "wasm/codeforces_div_2_round_968_problem_b.js"
+  },
+  {
+    "id": "codeforces_div_2_round_968_problem_c",
+    "source": "codeforces/div_2/round_968/problem_c.cpp",
+    "problem": "Codeforces Round 968 (Div. 2), C - Turtle and Good Pairs",
+    "link": "https://codeforces.com/contest/2003/problem/C",
+    "summary": "Given a lowercase string, reorder its characters to maximize the number of\ngood pairs. A pair is good if both positions contain the same character, or if\nthere is a valid split point between them that satisfies the pleasant-pair\ncondition from the statement.",
+    "solve": "Count how many times each character appears. Then repeatedly append one\navailable occurrence of each character from 'a' to 'z'. This distributes equal\ncharacters across the string instead of placing all copies together, which\nmaximizes the number of pairs that can become good.",
+    "js": "wasm/codeforces_div_2_round_968_problem_c.js"
+  },
+  {
+    "id": "codeforces_div_2_round_969_problem_a",
+    "source": "codeforces/div_2/round_969/problem_a.cpp",
+    "problem": "Codeforces Round 969 (Div. 2), A - Dora's Set",
+    "link": "https://codeforces.com/contest/2007/problem/A",
+    "summary": "For each test case, given l and r, choose as many disjoint triples as possible\nfrom the integers in [l, r]. Each triple must contain three numbers that are\npairwise coprime.",
+    "solve": "Every three consecutive numbers in the form odd, even, odd are pairwise\ncoprime. If a common divisor k greater than 1 divided two of those numbers,\ntheir difference would also have to be divisible by k. Consecutive values\ndiffer by 1, and the two odd values differ by 2, so no such k exists. The\nsolution counts how many odd numbers are in [l, r]; each valid triple uses\ntwo odd numbers, so the answer is odd_count / 2.",
+    "js": "wasm/codeforces_div_2_round_969_problem_a.js"
+  },
+  {
+    "id": "codeforces_div_2_round_969_problem_b",
+    "source": "codeforces/div_2/round_969/problem_b.cpp",
+    "problem": "Codeforces Round 969 (Div. 2), B - Index and Maximum Value",
+    "link": "https://codeforces.com/contest/2007/problem/B",
+    "summary": "Given an array and m operations, each operation either adds 1 or subtracts 1\nfrom every value inside a range [l, r]. After each operation, output the\ncurrent maximum value of the array.",
+    "solve": "Only the current maximum matters. If the maximum value is inside [l, r], the\noperation changes it by +1 or -1. If it is outside [l, r], the maximum does\nnot change. If another value ever reaches or exceeds the old maximum after an\noperation, it must first pass through the same affected ranges, so tracking\nonly the maximum is enough.",
+    "js": "wasm/codeforces_div_2_round_969_problem_b.js"
+  },
+  {
+    "id": "codeforces_div_3_round_479_problem_c",
+    "source": "codeforces/div_3/round_479/problem_c.cpp",
+    "problem": "Codeforces Round 479 (Div. 3), C - Less or Equal",
+    "link": "https://codeforces.com/contest/977/problem/C",
+    "summary": "Given an array and k, find an integer x such that exactly k array elements are\nless than or equal to x. If no such x exists, print -1.",
+    "solve": "If the array is sorted, the problem is solved.\nDue to the range of the numbers, these approaches are possible:\nradix_sort with O(n) complexity\nalgorithm sort with O(n*ln(n)) complexity\n\nOnce the array is sorted and k > 0,\nit is enough to know that the k-th number is smaller than the next one; then that same number works.\nn_array[0] ... <= n_array[k-1], so if n_array[k] > n_array[k-1]\nn_array[0] ... n_array[k-1] <= n_array[k-1]",
+    "js": "wasm/codeforces_div_3_round_479_problem_c.js"
+  },
+  {
+    "id": "codeforces_div_3_round_486_problem_a",
+    "source": "codeforces/div_3/round_486/problem_a.cpp",
+    "problem": "Codeforces Round 486 (Div. 3), A - Diverse Team",
+    "link": "https://codeforces.com/contest/988/problem/A",
+    "summary": "Given n students and their ratings, choose k students with pairwise distinct\nratings. If possible, print their 1-based indices; otherwise, print NO.",
+    "solve": "Store the first index where each rating appears. Every time a new rating is\nfound, count it as one selected student until k distinct ratings are collected.",
+    "js": "wasm/codeforces_div_3_round_486_problem_a.js"
+  },
+  {
+    "id": "codeforces_div_3_round_531_problem_a",
+    "source": "codeforces/div_3/round_531/problem_a.cpp",
+    "problem": "Codeforces Round 531 (Div. 3), A - Integer Sequence Dividing",
+    "link": "https://codeforces.com/contest/1102/problem/A",
+    "summary": "Split the numbers from 1 to n into two groups so that the absolute difference\nbetween their sums is as small as possible.",
+    "solve": "First, by Euler-style intuition, symmetric pairs can be formed:\n1 ... n\nn ... 1\nPairs are (1, n), (2, (n-1)), etc.\nWhen the same number of pairs can be formed for both groups, |SUM(A) - SUM(B)| = 0; this happens when n is a multiple of 4.\nWhen n is not a multiple of 4, res = n%4 and new_n = n-res.\nThe first \"res\" numbers can be separated from the following \"new_n\" numbers; with new_n, groups A and B can be formed with x = 0.\nThen the remaining res numbers must be added to groups A and B.\nres = 1 -> add 1 to any group; x = 1\nres = 2 -> add 1,2; add 1 to one group and 2 to the other; x = 1\nres = 3 -> add 1,2,3; add 1 and 2 to one group and 3 to the other; x = 0",
+    "js": "wasm/codeforces_div_3_round_531_problem_a.js"
+  },
+  {
+    "id": "codeforces_div_3_round_925_problem_a",
+    "source": "codeforces/div_3/round_925/problem_a.cpp",
+    "problem": "Codeforces Round 925 (Div. 3), A - Recovering a Small String",
+    "link": "https://codeforces.com/contest/1931/problem/A",
+    "summary": "For each test case, an integer n is given. It represents the sum of the\npositions of three lowercase letters, where 'a' is 1 and 'z' is 26. The task\nis to print the lexicographically smallest three-letter string with that sum.",
+    "solve": "To minimize the string lexicographically, keep the earliest letters as small\nas possible and place as much value as possible on the right. This solution\nfills the answer from the last position to the first, taking up to 26 each\ntime while leaving the remaining positions with at least 1.",
+    "js": "wasm/codeforces_div_3_round_925_problem_a.js"
+  },
+  {
+    "id": "codeforces_div_3_round_946_problem_a",
+    "source": "codeforces/div_3/round_946/problem_a.cpp",
+    "problem": "Codeforces Round 946 (Div. 3), A - Phone Desktop",
+    "link": "https://codeforces.com/contest/1974/problem/A",
+    "summary": "Each phone screen is a 5 by 3 grid. A 1x1 icon uses one cell, and a 2x2 icon\nuses four cells. For each test case, given x small icons and y large icons,\nfind the minimum number of screens needed to place all icons.",
+    "solve": "Each screen can fit at most two 2x2 icons, so first reserve ceil(y / 2)\nscreens for the large icons. Those screens may still have free 1x1 cells.\nAfter placing as many small icons as possible there, any remaining small icons\nneed extra screens, each with 15 cells.",
+    "js": "wasm/codeforces_div_3_round_946_problem_a.js"
+  },
+  {
+    "id": "codeforces_div_3_round_946_problem_b",
+    "source": "codeforces/div_3/round_946/problem_b.cpp",
+    "problem": "Codeforces Round 946 (Div. 3), B - Symmetric Encoding",
+    "link": "https://codeforces.com/contest/1974/problem/B",
+    "summary": "A string was encoded by taking its distinct characters in sorted order and\nreplacing each character with its symmetric counterpart in that sorted list.\nGiven the encoded string, recover the original string.",
+    "solve": "Mark which letters appear, assign each appearing letter its position in sorted\norder, and map it to the letter with the opposite position. Applying that\nsymmetric mapping to every character decodes the string.",
+    "js": "wasm/codeforces_div_3_round_946_problem_b.js"
+  },
+  {
+    "id": "codeforces_div_3_round_946_problem_d",
+    "source": "codeforces/div_3/round_946/problem_d.cpp",
+    "problem": "Codeforces Round 946 (Div. 3), D - Ingenuity-2",
+    "link": "https://codeforces.com/contest/1974/problem/D",
+    "summary": "A sequence of moves is given using N, S, E, and W. Each move must be assigned\nto either a rover or a helicopter. The goal is to make both end at the same\nfinal position, while both receive at least one move. If it is impossible,\nprint NO.",
+    "solve": "The total displacement on both axes must be even; otherwise it cannot be split\nequally. Opposite moves can be paired and shared between the two vehicles.\nExtra moves in one direction are alternated between them so both accumulate\nthe same displacement. The all-balanced tiny cases still need enough moves so\nboth vehicles can be used.",
+    "js": "wasm/codeforces_div_3_round_946_problem_d.js"
+  },
+  {
+    "id": "codeforces_div_3_round_946_problem_e",
+    "source": "codeforces/div_3/round_946/problem_e.cpp",
+    "problem": "Codeforces Round 946 (Div. 3), E - Money Buys Happiness",
+    "link": "https://codeforces.com/contest/1974/problem/E",
+    "summary": "Over m months, each month offers one item with cost c[i] and happiness h[i].\nYou earn x money per month over time, and an item can only be bought if the\nmoney available before that month is enough. The goal is to maximize total\nhappiness.",
+    "solve": "Use dynamic programming by happiness. dp[h] stores the minimum total money\nneeded to reach happiness h after processing some months. For each month,\neither skip the item or buy it if the new total cost does not exceed the money\navailable by that month. The largest happiness with finite cost is the answer.",
+    "js": "wasm/codeforces_div_3_round_946_problem_e.js"
+  },
+  {
+    "id": "codeforces_div_4_round_1050_problem_a",
+    "source": "codeforces/div_4/round_1050/problem_a.cpp",
+    "problem": "Codeforces Round 1050 (Div. 4), A - Sublime Sequence",
+    "link": "https://codeforces.com/contest/2148/problem/A",
+    "summary": "Given x and n, evaluate the alternating sequence formed with n terms of x and\n-x.",
+    "solve": "If n is even, the sum cancels out; if n is odd, it equals x.",
+    "js": "wasm/codeforces_div_4_round_1050_problem_a.js"
+  },
+  {
+    "id": "codeforces_div_4_round_1050_problem_b",
+    "source": "codeforces/div_4/round_1050/problem_b.cpp",
+    "problem": "Codeforces Round 1050 (Div. 4), B - Lasers",
+    "link": "https://codeforces.com/contest/2148/problem/B",
+    "summary": "Given vertical and horizontal laser lines, determine the minimum number of\nlaser lines that must be crossed to reach the target.",
+    "solve": "Any movement can be reduced to 3x3 segments starting from the center.\nReaching edge cells requires 1 step.\nTo reach corners, the path goes through edge -> corner.\nOr if the path goes diagonally through the vertex to the corner, it takes 2.\n\nTherefore, reaching each segment requires the number of Euclidean-distance crossings between segments.\nAlso, the route that goes fully right first and then fully up is valid.\n\nThe number of segments on x is (m + 1). Starting from the first segment and\nreaching the (m + 1)-th segment crosses m lines.\nSimilar analysis for going from the lower-right corner to the upper-right corner: n crossings.\nsolve = n + m",
+    "js": "wasm/codeforces_div_4_round_1050_problem_b.js"
+  },
+  {
+    "id": "codeforces_div_4_round_1050_problem_c",
+    "source": "codeforces/div_4/round_1050/problem_c.cpp",
+    "problem": "Codeforces Round 1050 (Div. 4), C - Pacer",
+    "link": "https://codeforces.com/contest/2148/problem/C",
+    "summary": "A runner has time checkpoints with required positions. Between checkpoints,\nthe runner can move or wait. Maximize the number of seconds spent moving while\nstill being at each required position at the required time.",
+    "solve": "In general this is a greedy problem, because the history is fully described by the pot state.\nTherefore, it is necessary to find the maximum score between requirements a(k) and a(k+1).\nThis score is the time needed to reach the requirement: 1 if pots differ, 0 if they are equal.\nAdd the loops that can be generated: (time between requirements - time needed to reach it) / cycle time.\nThe cycle time is 2.",
+    "js": "wasm/codeforces_div_4_round_1050_problem_c.js"
+  },
+  {
+    "id": "codeforces_div_4_round_640_problem_c",
+    "source": "codeforces/div_4/round_640/problem_c.cpp",
+    "problem": "Codeforces Round 640 (Div. 4), C - K-th Not Divisible by n",
+    "link": "https://codeforces.com/contest/1352/problem/C",
+    "summary": "Given n and k, find the k-th positive integer that is not divisible by n.",
+    "solve": "For a given number x, its position would be (x / n) * (n-1) + x % n = k.\nAlways x % n != 0.\n     (x / n) + (x % n / (n-1)) = k / (n-1)\nif k % (n-1) == 0 -> (x % n / (n-1)) = 1\n     x = (k/(n-1))*n - 1\nelse (x % n / (n-1)) = 0\n     x = (k/(n-1))*n + k % (n-1)",
+    "js": "wasm/codeforces_div_4_round_640_problem_c.js"
+  },
+  {
+    "id": "codeforces_div_4_round_944_problem_b",
+    "source": "codeforces/div_4/round_944/problem_b.cpp",
+    "problem": "Codeforces Round 944 (Div. 4), B - Different String",
+    "link": "https://codeforces.com/contest/1971/problem/B",
+    "summary": "Given a string, rearrange its characters to produce a different string. If no\ndifferent rearrangement exists, print NO.",
+    "solve": "If every character is equal, no rearrangement can change the string. Otherwise,\nfind two adjacent different characters and swap them; this guarantees the new\nstring differs from the original.",
+    "js": "wasm/codeforces_div_4_round_944_problem_b.js"
+  },
+  {
+    "id": "codeforces_div_4_round_944_problem_c",
+    "source": "codeforces/div_4/round_944/problem_c.cpp",
+    "problem": "Codeforces Round 944 (Div. 4), C - Clock and Strings",
+    "link": "https://codeforces.com/contest/1971/problem/C",
+    "summary": "Four numbers a, b, c, and d are positions on a clock. Determine whether the\nchords between a-b and c-d intersect.",
+    "solve": "Put a and b in increasing order. The chords intersect exactly when one of c\nand d lies strictly inside the interval (a, b), and the other lies outside it.",
+    "js": "wasm/codeforces_div_4_round_944_problem_c.js"
+  },
+  {
+    "id": "codeforces_div_4_round_944_problem_f",
+    "source": "codeforces/div_4/round_944/problem_f.cpp",
+    "problem": "Codeforces Round 944 (Div. 4), F - Circle Perimeter",
+    "link": "https://codeforces.com/contest/1971/problem/F",
+    "summary": "Given r, count integer points whose distance from the origin is at least r and\nstrictly less than r + 1.",
+    "solve": "Count points in one quadrant and multiply by 4. For each positive x, compute\nthe vertical range between the circle of radius r and the circle of radius\nr + 1. The number of integer y values in that range is the difference between\nthe ceilings of both boundaries.",
+    "js": "wasm/codeforces_div_4_round_944_problem_f.js"
+  },
+  {
+    "id": "codeforces_div_4_round_952_problem_a",
+    "source": "codeforces/div_4/round_952/problem_a.cpp",
+    "problem": "Codeforces Round 952 (Div. 4), A - Creating Words",
+    "link": "https://codeforces.com/contest/1985/problem/A",
+    "summary": "Given two three-letter words, swap their first characters and print the\nresulting words.",
+    "solve": "Store the first character of the first word, replace it with the first\ncharacter of the second word, then place the stored character in the second\nword.",
+    "js": "wasm/codeforces_div_4_round_952_problem_a.js"
+  },
+  {
+    "id": "codeforces_div_4_round_952_problem_b",
+    "source": "codeforces/div_4/round_952/problem_b.cpp",
+    "problem": "Codeforces Round 952 (Div. 4), B - Maximum Multiple Sum",
+    "link": "https://codeforces.com/contest/1985/problem/B",
+    "summary": "For a given n, choose x from 2 to n. For that x, sum all positive multiples of\nx that are at most n. Print the x that gives the maximum sum.",
+    "solve": "Try every possible x. If k = n / x, then the multiples are x, 2x, ..., kx, and\ntheir sum is x * k * (k + 1) / 2. Keep the x with the largest value.",
+    "js": "wasm/codeforces_div_4_round_952_problem_b.js"
+  },
+  {
+    "id": "codeforces_div_4_round_952_problem_c",
+    "source": "codeforces/div_4/round_952/problem_c.cpp",
+    "problem": "Codeforces Round 952 (Div. 4), C - Good Prefixes",
+    "link": "https://codeforces.com/contest/1985/problem/C",
+    "summary": "Given an array, count how many prefixes are good. A prefix is good if one of\nits elements is equal to the sum of all the other elements in that prefix.",
+    "solve": "For a prefix with total sum S, the condition is equivalent to having an\nelement equal to S / 2. Therefore, only the maximum element in the prefix can\nbe a candidate. Track the prefix sum and the current maximum; a prefix is good\nwhen 2 * current_max == prefix_sum.",
+    "js": "wasm/codeforces_div_4_round_952_problem_c.js"
+  },
+  {
+    "id": "codeforces_div_4_round_952_problem_d",
+    "source": "codeforces/div_4/round_952/problem_d.cpp",
+    "problem": "Codeforces Round 952 (Div. 4), D - Manhattan Circle",
+    "link": "https://codeforces.com/contest/1985/problem/D",
+    "summary": "Given a grid containing a Manhattan circle drawn with '#', find the coordinates\nof the circle center.",
+    "solve": "Scan the grid until the first '#'. That position is on the top of the vertical\ndiameter. Continue downward in the same column while cells are '#'; the center\nis halfway along that vertical segment.",
+    "js": "wasm/codeforces_div_4_round_952_problem_d.js"
+  },
+  {
+    "id": "codeforces_div_4_round_952_problem_e",
+    "source": "codeforces/div_4/round_952/problem_e.cpp",
+    "problem": "Codeforces Round 952 (Div. 4), E - Secret Box",
+    "link": "https://codeforces.com/contest/1985/problem/E",
+    "summary": "Given box dimensions x, y, z and a volume k, choose integer dimensions\na, b, c such that a * b * c = k and a <= x, b <= y, c <= z. Maximize the\nnumber of positions where that smaller box can be placed inside the larger box.",
+    "solve": "Factorize k, then enumerate how its prime powers are distributed among the\nfirst two dimensions. The third factor is determined by the remaining powers.\nFor every valid triple inside the limits, compute\n(x - a + 1) * (y - b + 1) * (z - c + 1), and keep the maximum.",
+    "js": "wasm/codeforces_div_4_round_952_problem_e.js"
+  },
+  {
+    "id": "codeforces_global_round_global_2_problem_e",
+    "source": "codeforces/global/round_global_2/problem_e.cpp",
+    "problem": "Codeforces Global Round 2, E - Pavel and Triangles",
+    "link": "https://codeforces.com/contest/1119/problem/E",
+    "summary": "Given counts of sticks with lengths 2^0, 2^1, ..., 2^(n-1), form as many\ntriangles as possible.",
+    "solve": "Triangle sides must satisfy (a - b) < c < (a + b). Since all stick lengths\nare powers of two, no triangle can use three different side lengths: if\na < b < c, then b = 2^k and c >= 2^(k + 1), so c - b >= 2^k, but a < 2^k.\nTherefore every valid triangle is isosceles or equilateral. The strategy is\nto exhaust triangles with two equal sides at the current length and one\nremaining smaller side, then form equilateral triangles from leftover sticks.",
+    "js": "wasm/codeforces_global_round_global_2_problem_e.js"
+  },
+  {
+    "id": "codeforces_global_round_global_26_problem_a",
+    "source": "codeforces/global/round_global_26/problem_a.cpp",
+    "problem": "Codeforces Global Round 26, A - Strange Splitting",
+    "link": "https://codeforces.com/contest/1984/problem/A",
+    "summary": "Given an array, color each element red or blue so that both colors are used\nand the difference between the maximum and minimum red values is different\nfrom the difference between the maximum and minimum blue values. If this is\nimpossible, print NO.",
+    "solve": "If every value is equal, both color groups will have range 0, so it is\nimpossible. Otherwise, with at least one different value, color one suitable\nposition red and the rest blue; this makes one group's range different from\nthe other's.",
+    "js": "wasm/codeforces_global_round_global_26_problem_a.js"
+  },
+  {
+    "id": "codeforces_global_round_global_26_problem_b",
+    "source": "codeforces/global/round_global_26/problem_b.cpp",
+    "problem": "Codeforces Global Round 26, B - Large Addition",
+    "link": "https://codeforces.com/contest/1984/problem/B",
+    "summary": "Determine whether x can be written as the sum of two large positive integers,\nwhere a large integer has no zero digits.",
+    "solve": "For large numbers added digit by digit, the inner digits must be produced with\nan incoming carry. That makes digit 0 impossible in the middle, while the\nfirst digit must be 1 and the last digit cannot be 9. The lower bound with the\nsame digit count is 111...110, and every middle digit must be non-zero.",
+    "js": "wasm/codeforces_global_round_global_26_problem_b.js"
+  },
+  {
+    "id": "codeforces_global_round_global_26_problem_c_1",
+    "source": "codeforces/global/round_global_26/problem_c_1.cpp",
+    "problem": "Codeforces Global Round 26, C1 - Magnitude (Easy Version)",
+    "link": "https://codeforces.com/contest/1984/problem/C1",
+    "summary": "Process the array from left to right. At each step, add the current value to\nthe current result, then choose whether to keep it as is or replace it with\nits absolute value. Find the maximum final value.",
+    "solve": "Only two reachable states matter after each position: the maximum value that\ncan be made non-negative through absolute value, and the minimum raw value\nthat may later become useful. Update both states from the previous positive\nand negative candidates.",
+    "js": "wasm/codeforces_global_round_global_26_problem_c_1.js"
+  },
+  {
+    "id": "codeforces_global_round_global_26_problem_c_2",
+    "source": "codeforces/global/round_global_26/problem_c_2.cpp",
+    "problem": "Codeforces Global Round 26, C2 - Magnitude (Hard Version)",
+    "link": "https://codeforces.com/contest/1984/problem/C2",
+    "summary": "Process the array from left to right. At each step, add the current value to\nthe current result, then choose whether to keep it as is or replace it with\nits absolute value. Count how many ways produce the maximum final value,\nmodulo 998244353.",
+    "solve": "Track the best positive state and the best negative state after each prefix,\ntogether with the number of ways to reach each one. Each new value can be\napplied to both states. If applying absolute value produces the same best\nvalue from both sides, add their counts, avoiding double-counting when both\nprevious states were actually the same value.",
+    "js": "wasm/codeforces_global_round_global_26_problem_c_2.js"
+  },
+  {
+    "id": "codeforces_special_8vc_venture_cup_2017_elimination_round_problem_a",
+    "source": "codeforces/special/8vc_venture_cup_2017_elimination_round/problem_a.cpp",
+    "problem": "8VC Venture Cup 2017 - Elimination Round, A - PolandBall and Hypothesis",
+    "link": "https://codeforces.com/contest/755/problem/A",
+    "summary": "Given n, find a positive integer m such that n * m + 1 is composite.",
+    "solve": "Precompute primality with the Sieve of Eratosthenes, then check m from 1\nupward until n * m + 1 is not prime.",
+    "js": "wasm/codeforces_special_8vc_venture_cup_2017_elimination_round_problem_a.js"
+  }
+]
