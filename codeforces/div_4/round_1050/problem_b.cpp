@@ -2,16 +2,24 @@
 
 using namespace std;
 
+// Problem: Codeforces Round 1050 (Div. 4), B - Lasers
+// Link: https://codeforces.com/contest/2148/problem/B
+//
+// Summary:
+// Given vertical and horizontal laser lines, determine the minimum number of
+// laser lines that must be crossed to reach the target.
+//
+// Solve:
 // Any movement can be reduced to 3x3 segments starting from the center.
 // Reaching edge cells requires 1 step.
 // To reach corners, the path goes through edge -> corner.
-// o que pases en diagonal por el vertice hasta la esquina, se necesita 2
+// Or if the path goes diagonally through the vertex to the corner, it takes 2.
 
 // Therefore, reaching each segment requires the number of Euclidean-distance crossings between segments.
 // Also, the route that goes fully right first and then fully up is valid.
 
-// La cantidad de segmentos en x es (m+1), iniciamos en el primer segmento, queremos llegar al (m+1)
-// Nos topamos con m cruces
+// The number of segments on x is (m + 1). Starting from the first segment and
+// reaching the (m + 1)-th segment crosses m lines.
 // Similar analysis for going from the lower-right corner to the upper-right corner: n crossings.
 // solve = n + m
 

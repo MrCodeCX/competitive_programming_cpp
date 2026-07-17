@@ -2,6 +2,21 @@
 #include <vector>
 using namespace std;
  
+// Problem: Codeforces Round 968 (Div. 2), D1 - Turtle and a MEX Problem (Easy Version)
+// Link: https://codeforces.com/contest/2003/problem/D1
+//
+// Summary:
+// Given several sequences and an integer m, define a function based on applying
+// MEX operations to values x from 0 to m. The task is to compute the total value
+// of that function over all x.
+//
+// Solve:
+// This attempt reduces every sequence to the value reached after inserting the
+// first missing number and then taking the next MEX. It keeps the maximum such
+// reachable value across all sequences as mexMax. For x <= mexMax, it assumes
+// the function value is mexMax; for larger x, it assumes the value stays x, then
+// sums both ranges with arithmetic-series formulas.
+//
 // KNOWN ISSUE:
 // This attempt is known to fail on test 24.
 // The MEX-based reasoning below captures the intended approach, but the implementation has an unresolved edge-case bug.
@@ -70,7 +85,6 @@ int main() {
 						value_hueco = false;
 					}
 					else {
-						// Found the second gap, so it stops here.
 						break;
 					}
 				}

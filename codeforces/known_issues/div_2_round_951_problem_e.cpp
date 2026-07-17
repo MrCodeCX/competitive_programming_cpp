@@ -3,6 +3,21 @@
 #include <map>
 using namespace std;
 
+// Problem: Codeforces Round 951 (Div. 2), E - Manhattan Triangle
+// Link: https://codeforces.com/contest/1979/problem/E
+//
+// Summary:
+// Given points on a grid and a distance d, find three point indices that can
+// form the required Manhattan-distance triangle. If no such triple exists,
+// print 0 0 0.
+//
+// Solve:
+// This attempt groups points by the two diagonal values x + y and y - x. Inside
+// each group, points are ordered by a projected Manhattan distance from a far
+// reference corner. The code searches pairs separated by distance d on one
+// diagonal, then checks the opposite diagonal maps for a third point that closes
+// one of the possible triangle orientations.
+//
 // KNOWN ISSUE:
 // This attempt has a known failing case where it outputs -1 at index 4618.
 // The geometric grouping idea may still be useful, but the implementation has an unresolved edge-case bug.
@@ -49,8 +64,6 @@ vector<int> solve(map<int, map<int, Point>>& m_1, map<int, map<int, Point>>& m_2
 			if (m_1[pair_1.first][pair_2.first + d].indice != -1) {
 				Point p_1 = pair_2.second;
 				Point p_2 = m_1[pair_1.first][pair_2.first + d];
-				// If the common point exists, check the 3 cases.
-				// First case.
 				if (m_2[p_1.y - p_1.x][get_d_2(p_1.x, p_1.y) + d].indice != -1) {
 					sol_1 = p_1.indice;
 					sol_2 = p_2.indice;
@@ -65,7 +78,6 @@ vector<int> solve(map<int, map<int, Point>>& m_1, map<int, map<int, Point>>& m_2
 					val_bool = true;
 					break;
 				}
-				// First case, alternated.
 				if (m_2[p_2.y - p_2.x][get_d_2(p_2.x, p_2.y) + d].indice != -1) {
 					sol_1 = p_1.indice;
 					sol_2 = p_2.indice;
@@ -81,7 +93,6 @@ vector<int> solve(map<int, map<int, Point>>& m_1, map<int, map<int, Point>>& m_2
 					val_bool = true;
 					break;
 				}
-				// Second case.
 				if (d % 4 == 0) {
 					if (m_1[p_1.y + p_1.x + d][get_d_1(p_1.x + d * 0.75, p_1.y + d * 0.25)].indice != -1) {
 						sol_1 = p_1.indice;
@@ -103,14 +114,12 @@ vector<int> solve(map<int, map<int, Point>>& m_1, map<int, map<int, Point>>& m_2
 			}
 		}
 	}
-	// Second case, alternated.
 	for (pair<int, map<int, Point>> pair_1 : m_2) {
 		if (val_bool) break;
 		for (pair<int, Point> pair_2 : pair_1.second) {
 			if (m_2[pair_1.first][pair_2.first + d].indice != -1) {
 				Point p_1 = pair_2.second;
 				Point p_2 = m_2[pair_1.first][pair_2.first + d];
-				// Second case, alternated.
 				if (d % 4 == 0) {
 					if (m_2[p_1.y - p_1.x - d][get_d_2(p_1.x + d * 0.75, p_1.y - d * 0.25)].indice != -1) {
 						sol_1 = p_1.indice;
@@ -148,13 +157,12 @@ int main() {
 			p.x = x;
 			p.y = y;
 			p.indice = i;
-			// First key: x + y. Second key: Manhattan distance to the lower-left corner.
 			map_1[y + x][get_d_1(p.x, p.y)] = p;
 			map_2[y - x][get_d_2(p.x, p.y)] = p;
 		}
 		solutions.push_back(solve(map_1, map_2, d));
 	}
-	for (int i = 0; i < solutions.size(); i++)
+	for (size_t i = 0; i < solutions.size(); i++)
 	{
 		for (int j = 0; j < 3; j++)
 		{

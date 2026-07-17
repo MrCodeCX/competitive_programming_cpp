@@ -4,6 +4,17 @@
 using namespace std;
 #define N 101
 
+// Problem: Codeforces Round 486 (Div. 3), A - Diverse Team
+// Link: https://codeforces.com/contest/988/problem/A
+//
+// Summary:
+// Given n students and their ratings, choose k students with pairwise distinct
+// ratings. If possible, print their 1-based indices; otherwise, print NO.
+//
+// Solve:
+// Store the first index where each rating appears. Every time a new rating is
+// found, count it as one selected student until k distinct ratings are collected.
+
 int main() {
     size_t n, k;
     cin >> n; cin>>k;

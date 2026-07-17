@@ -1,21 +1,29 @@
 #include <iostream>
 using namespace std;
+
+// Problem: Codeforces Round 969 (Div. 2), A - Dora's Set
+// Link: https://codeforces.com/contest/2007/problem/A
+//
+// Summary:
+// For each test case, given l and r, choose as many disjoint triples as possible
+// from the integers in [l, r]. Each triple must contain three numbers that are
+// pairwise coprime.
+//
+// Solve:
+// Every three consecutive numbers in the form odd, even, odd are pairwise
+// coprime. If a common divisor k greater than 1 divided two of those numbers,
+// their difference would also have to be divisible by k. Consecutive values
+// differ by 1, and the two odd values differ by 2, so no such k exists. The
+// solution counts how many odd numbers are in [l, r]; each valid triple uses
+// two odd numbers, so the answer is odd_count / 2.
  
  
 int main() {
 	int t; cin >> t;
 	while (t--) {
-		// todos los consecutivos de a 3 son pesi entre si, siempre cuando sea impar par impar
-		// Notice that if there is a k (!= 1) such that a // k, b // k, c // k, and a < b < c,
-		// then a + k <= b. But if they are consecutive, b = a + 1, so this is impossible.
-		// Also a + k <= c, but c = a + 2 when consecutive. If k is not 2, it is impossible;
-		// k is not 2 because there are two odd numbers and only one even number.
 		int l; cin >> l; int r; cin >> r;
-		// Answer: number of operations = number of odd values divided by 2.
 		if (r % 2 == 0) r--;
 		if (l % 2 == 0) l++;
-		// 2 3 4 5 6 7 8 9 10 se transforma a
-		// 3 4 5 6 7 8 9, from this form odd values can be derived as 1 + ((r - l) / 2).
 		int impares = 1 + ((r - l) / 2);
 		cout << (int)(impares / 2) << endl;
 	}

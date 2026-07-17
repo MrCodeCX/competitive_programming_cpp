@@ -4,6 +4,14 @@
 using namespace std;
 #define LL long long
 
+// Problem: Codeforces Round 332 (Div. 2), D - Spongebob and Squares
+// Link: https://codeforces.com/contest/599/problem/D
+//
+// Summary:
+// Given x, find all grid dimensions n by m such that the total number of square
+// subrectangles in the grid is exactly x.
+//
+// Solve:
 // Squares range from size 1 to min_side and extend across max_side.
 
 // It is only necessary to analyze combinations with n < m, so total = analysis * 2.
@@ -51,7 +59,6 @@ int main() {
             counting_cases++;
         }
     }
-    // SELECT THE CASE
     bool state_case = n_array[counting_cases-1] == m_array[counting_cases-1];
     size_t real_cases = counting_cases*2;
     size_t second_iter = counting_cases;
@@ -59,7 +66,6 @@ int main() {
         real_cases--;
         second_iter--;
     }
-    // SHOW
     cout << real_cases << endl;
     for (size_t i = 0; i < counting_cases; i++)
     {

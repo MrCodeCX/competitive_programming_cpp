@@ -1,6 +1,21 @@
 #include <iostream>
-#include <stdlib.h>
 using namespace std;
+
+// Problem: Codeforces Round 946 (Div. 3), D - Ingenuity-2
+// Link: https://codeforces.com/contest/1974/problem/D
+//
+// Summary:
+// A sequence of moves is given using N, S, E, and W. Each move must be assigned
+// to either a rover or a helicopter. The goal is to make both end at the same
+// final position, while both receive at least one move. If it is impossible,
+// print NO.
+//
+// Solve:
+// The total displacement on both axes must be even; otherwise it cannot be split
+// equally. Opposite moves can be paired and shared between the two vehicles.
+// Extra moves in one direction are alternated between them so both accumulate
+// the same displacement. The all-balanced tiny cases still need enough moves so
+// both vehicles can be used.
  
 int max_top(int a, int b) {
 	if (a > b) return a;
@@ -43,9 +58,7 @@ int main() {
 			}
 		}
 		if ((sum_x % 2 == 0 && sum_y % 2 == 0) && (((sum_x != 0) || (sum_y != 0)) || ((sum_n + sum_s + sum_e + sum_w) >= 4))) {
-			int num_1 = max_top(sum_n, sum_s);
 			int num_2 = min_top(sum_n, sum_s);
-			int num_3 = max_top(sum_e, sum_w);
 			int num_4 = min_top(sum_e, sum_w);
 			int counter_n = 0;
 			int counter_s = 0;

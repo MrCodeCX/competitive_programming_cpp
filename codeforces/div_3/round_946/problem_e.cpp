@@ -1,14 +1,27 @@
 #include <iostream>
 #include <vector>
-#include <stdlib.h>
 using namespace std;
  
 #define ll long long
 const ll NP = 1000000000000;
+
+// Problem: Codeforces Round 946 (Div. 3), E - Money Buys Happiness
+// Link: https://codeforces.com/contest/1974/problem/E
+//
+// Summary:
+// Over m months, each month offers one item with cost c[i] and happiness h[i].
+// You earn x money per month over time, and an item can only be bought if the
+// money available before that month is enough. The goal is to maximize total
+// happiness.
+//
+// Solve:
+// Use dynamic programming by happiness. dp[h] stores the minimum total money
+// needed to reach happiness h after processing some months. For each month,
+// either skip the item or buy it if the new total cost does not exceed the money
+// available by that month. The largest happiness with finite cost is the answer.
  
 int main() {
 	int t; cin >> t;
-	vector<int> solves;
 	while (t--) {
 		int m; cin >> m; ll x; cin >> x;
 		vector<ll> c; vector <ll> h;
@@ -19,7 +32,6 @@ int main() {
 			cin >> c[i]; cin >> h[i];
 			h_max += h[i];
 		}
-		// Happiness states from 0 to h_max.
 		vector<ll> dp = vector<ll>((h_max + 1), NP);
 		dp[0] = 0;
 		for (int i = 0; i < m; i++)
@@ -37,14 +49,10 @@ int main() {
 		for (int i = (dp.size()-1); i >= 0; i--)
 		{
 			if(dp[i] != NP ) { 
-				solves.push_back(i);
+				cout << i << endl;
 				break;
 			}
 		}
-	}
-	for (int i = 0; i < solves.size(); i++)
-	{
-		cout << solves[i] << endl;
 	}
 	return 0;
 }

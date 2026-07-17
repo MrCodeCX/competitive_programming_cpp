@@ -1,9 +1,17 @@
 #include <iostream>
 #include <string>
-#include <math.h>
+#include <cmath>
 
 using namespace std;
 
+// Problem: Codeforces Round 299 (Div. 2), B - Tavas and SaDDas
+// Link: https://codeforces.com/contest/535/problem/B
+//
+// Summary:
+// Given a lucky number made only of digits 4 and 7, find its 1-based position
+// in the increasing sequence of all lucky numbers.
+//
+// Solve:
 
 // Through permutations, all lucky numbers with k digits can be formed.
 // Therefore, position(n) = count of lucky numbers with fewer digits + position within the k-digit group, where k = get_cypher(n).
@@ -39,7 +47,6 @@ int main() {
     size_t position_relative = 1 + get_bin(n);
     size_t position = sum_position + position_relative;
 
-    // SHOW
     cout << position << endl;
     
     return 0;

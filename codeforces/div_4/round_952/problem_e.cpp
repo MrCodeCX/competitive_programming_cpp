@@ -2,22 +2,21 @@
 #include <vector>
 #include <cmath>
 using namespace std;
+
+// Problem: Codeforces Round 952 (Div. 4), E - Secret Box
+// Link: https://codeforces.com/contest/1985/problem/E
+//
+// Summary:
+// Given box dimensions x, y, z and a volume k, choose integer dimensions
+// a, b, c such that a * b * c = k and a <= x, b <= y, c <= z. Maximize the
+// number of positions where that smaller box can be placed inside the larger box.
+//
+// Solve:
+// Factorize k, then enumerate how its prime powers are distributed among the
+// first two dimensions. The third factor is determined by the remaining powers.
+// For every valid triple inside the limits, compute
+// (x - a + 1) * (y - b + 1) * (z - c + 1), and keep the maximum.
  
-// Extras
-void show(vector<long long> v) {
-	for (int i = 0; i < v.size(); i++)
-	{
-		cout << v[i] << " ";
-	}
-	cout << endl;
-}
-void show(vector<int> v) {
-	for (int i = 0; i < v.size(); i++)
-	{
-		cout << v[i] << " ";
-	}
-	cout << endl;
-}
 long long pow_long(long long b, int a) {
 	long long iter = 1;
 	for (int i = 0; i < a; i++)
@@ -26,9 +25,6 @@ long long pow_long(long long b, int a) {
 	}
 	return iter;
 }
- 
-// Iniciales
-vector<long long> vect_sol;
 vector<long long> get_primos(long long k_ref) {
 	vector<long long> primos;
 	long long  k_aux = k_ref;
@@ -50,7 +46,7 @@ void traduct_primos(long long k_) {
 	vect_primos = { v[0] };
 	vect_num = { 1 };
 	int pot = 0;
-	for (int i = 1; i < v.size(); i++)
+	for (size_t i = 1; i < v.size(); i++)
 	{
 		if (v[i] == vect_primos[pot]) vect_num[pot]++;
 		else {
@@ -60,15 +56,12 @@ void traduct_primos(long long k_) {
 		}
 	}
 }
- 
-// Main, requiere vect_primos y vect_num bien definidos
 long long max_solution;
 long long max_1; long long max_2; long long max_3;
 long long valor(long long x, long long y, long long z) {
 	return ((1 + max_1 - x) * (1 + max_2 - y) * (1 + max_3 - z));
 }
-void recursion_2(int pt_2, long long fact_1, long long fact_2, vector<int> vect_resto_2, vector<int>& vect_resto_1) {
-	// Hallar el segundo vect_resto (que implica hallar el segundo factor)
+void recursion_2(size_t pt_2, long long fact_1, long long fact_2, vector<int> vect_resto_2, vector<int>& vect_resto_1) {
 	if (pt_2 < vect_resto_1.size()) {
 		recursion_2(pt_2 + 1, fact_1, fact_2, vect_resto_2, vect_resto_1);
 		long long iter = 1;
@@ -81,16 +74,13 @@ void recursion_2(int pt_2, long long fact_1, long long fact_2, vector<int> vect_
 		}
 	}
 	else {
-		// vect_resto_2 already implies the first two factors; the last one is determined, compare with the previous maximum.
 		if (fact_2 <= max_2) {
-			// Calcular fact_3
 			long long fact_3 = 1;
-			for (int i = 0; i < vect_primos.size(); i++)
+			for (size_t i = 0; i < vect_primos.size(); i++)
 			{
 				fact_3 *= pow_long(vect_primos[i], vect_resto_2[i]);
 			}
 			if (fact_3 <= max_3) {
-				// Compare.
 				long long val = valor(fact_1,fact_2,fact_3);
 				if (val > max_solution) max_solution = val;
 			}
@@ -98,7 +88,7 @@ void recursion_2(int pt_2, long long fact_1, long long fact_2, vector<int> vect_
 	}
  
 }
-void recursion_1(int pt, long long fact_1, vector<int> vect_resto) {
+void recursion_1(size_t pt, long long fact_1, vector<int> vect_resto) {
 	if (pt < vect_num.size()) {
 		recursion_1(pt + 1, fact_1, vect_resto);
 		long long iter = 1;
@@ -111,8 +101,6 @@ void recursion_1(int pt, long long fact_1, vector<int> vect_resto) {
 		}
 	}
 	else {
-		// Ya tenemos el vect resto que es = vect_num - vect_factor
-		// Call recursion 2 only if fact_1 satisfies the condition.
 		if (fact_1 <= max_1) recursion_2(0, fact_1, 1, vect_resto, vect_resto);
 	}
 }
@@ -120,18 +108,13 @@ int main() {
 	int t; cin >> t;
 	while (t--) {
 		cin >> max_1; cin >> max_2; cin >> max_3; long long k; cin >> k;
-		// Vector with only the needed factors.
 		if (k != 1) {
 			traduct_primos(k);
 			max_solution = 0;
 			recursion_1(0, 1, vect_num);
 		}
 		else max_solution = valor(1,1,1);
-		vect_sol.push_back(max_solution);
-	}
-	for (int i = 0; i < vect_sol.size(); i++)
-	{
-		cout << vect_sol[i] << endl;
+		cout << max_solution << endl;
 	}
 	return 0;
 }

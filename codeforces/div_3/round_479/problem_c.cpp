@@ -4,6 +4,14 @@
 
 using namespace std;
 
+// Problem: Codeforces Round 479 (Div. 3), C - Less or Equal
+// Link: https://codeforces.com/contest/977/problem/C
+//
+// Summary:
+// Given an array and k, find an integer x such that exactly k array elements are
+// less than or equal to x. If no such x exists, print -1.
+//
+// Solve:
 // If the array is sorted, the problem is solved.
 // Due to the range of the numbers, these approaches are possible:
 // radix_sort with O(n) complexity

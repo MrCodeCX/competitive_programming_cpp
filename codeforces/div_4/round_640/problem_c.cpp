@@ -2,6 +2,13 @@
 
 using namespace std;
 
+// Problem: Codeforces Round 640 (Div. 4), C - K-th Not Divisible by n
+// Link: https://codeforces.com/contest/1352/problem/C
+//
+// Summary:
+// Given n and k, find the k-th positive integer that is not divisible by n.
+//
+// Solve:
 // For a given number x, its position would be (x / n) * (n-1) + x % n = k.
 // Always x % n != 0.
 //      (x / n) + (x % n / (n-1)) = k / (n-1)

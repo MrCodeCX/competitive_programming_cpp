@@ -1,9 +1,18 @@
 #include <iostream>
-#include <vector>
 using namespace std;
+
+// Problem: Codeforces Round 952 (Div. 4), D - Manhattan Circle
+// Link: https://codeforces.com/contest/1985/problem/D
+//
+// Summary:
+// Given a grid containing a Manhattan circle drawn with '#', find the coordinates
+// of the circle center.
+//
+// Solve:
+// Scan the grid until the first '#'. That position is on the top of the vertical
+// diameter. Continue downward in the same column while cells are '#'; the center
+// is halfway along that vertical segment.
  
-vector<int> vect_h;
-vector<int> vect_k;
 int n; int m;
 char traduct(string& cadena, int x, int y) {
 	return cadena[(y - 1) * m + (x - 1)];
@@ -25,7 +34,6 @@ int main() {
 		{
 			for (int j = 1; j <= m; j++)
 			{
-				// j es x, i es y
 				int counter = 0;
 				if (traduct(s, j, i) == '#') {
 					for (int i_aux = (i + 1); i_aux <= n; i_aux++)
@@ -40,12 +48,7 @@ int main() {
 			}
 			if (val_for) break;
 		}
-		vect_h.push_back(y);
-		vect_k.push_back(x);
-	}
-	for (int i = 0; i < vect_h.size(); i++)
-	{
-		cout << vect_h[i] << " " << vect_k[i] << endl;
+		cout << y << " " << x << endl;
 	}
 	return 0;
 }

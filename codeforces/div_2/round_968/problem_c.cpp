@@ -1,52 +1,48 @@
 #include <iostream>
+#include <string>
 #include <vector>
 using namespace std;
- 
-// ascii -> del 97 (a) al 122 (z) son 26 en total
-#define N 26
-vector<int> array_counter(N,0);
- 
-void reset() {
-	for (int i = 0; i < N; i++)
-	{
-		array_counter[i] = 0;
-	}
-}
- 
-void counter(string& s, int size) {
-	for (int i = 0; i < size; i++)
-	{
-		array_counter[(int)(s[i] - 97)]++;
-	}
-}
- 
-string solve(string& s) {
-	reset();
-	counter(s, s.length());
-	string s_return(s.length(), ' ');
-	bool value_loop = true;
-	int s_counter = 0;
-	while (value_loop) {
-		value_loop = false;
-		for (int i = 0; i < N; i++)
-		{
-			if (array_counter[i] > 0) {
-				s_return[s_counter] = (char)(97 + i);
-				array_counter[i]--;
-				s_counter++;
-				value_loop = true;
-			}
-		}
-	}
-	return s_return;
-}
- 
+
+// Problem: Codeforces Round 968 (Div. 2), C - Turtle and Good Pairs
+// Link: https://codeforces.com/contest/2003/problem/C
+//
+// Summary:
+// Given a lowercase string, reorder its characters to maximize the number of
+// good pairs. A pair is good if both positions contain the same character, or if
+// there is a valid split point between them that satisfies the pleasant-pair
+// condition from the statement.
+//
+// Solve:
+// Count how many times each character appears. Then repeatedly append one
+// available occurrence of each character from 'a' to 'z'. This distributes equal
+// characters across the string instead of placing all copies together, which
+// maximizes the number of pairs that can become good.
+
 int main() {
 	int t; cin >> t;
 	while (t--) {
 		int n; cin >> n;
 		string s; cin >> s;
-		cout << solve(s) << endl;
+
+		vector<int> array_counter(26, 0);
+		for (char letter : s)
+		{
+			array_counter[letter - 'a']++;
+		}
+
+		string sol;
+		while ((int)sol.size() < n)
+		{
+			for (int i = 0; i < 26; i++)
+			{
+				if (array_counter[i] > 0) {
+					sol += (char)('a' + i);
+					array_counter[i]--;
+				}
+			}
+		}
+
+		cout << sol << endl;
 	}
 	return 0;
 }

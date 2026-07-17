@@ -1,5 +1,18 @@
 #include <iostream>
 using namespace std;
+
+// Problem: Codeforces Round 946 (Div. 3), B - Symmetric Encoding
+// Link: https://codeforces.com/contest/1974/problem/B
+//
+// Summary:
+// A string was encoded by taking its distinct characters in sorted order and
+// replacing each character with its symmetric counterpart in that sorted list.
+// Given the encoded string, recover the original string.
+//
+// Solve:
+// Mark which letters appear, assign each appearing letter its position in sorted
+// order, and map it to the letter with the opposite position. Applying that
+// symmetric mapping to every character decodes the string.
  
 int main() {
 	int t; cin >> t;

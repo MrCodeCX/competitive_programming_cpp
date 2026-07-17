@@ -4,6 +4,14 @@ using namespace std;
 
 #define N 3
 
+// Problem: Codeforces Round 511 (Div. 2), A - Little C Loves 3 I
+// Link: https://codeforces.com/contest/1047/problem/A
+//
+// Summary:
+// Given n, split it into three positive integers whose sum is n and none of
+// them is divisible by 3.
+//
+// Solve:
 // Aim for one maximum number, keep the rest minimal, and distribute the remainder across all of them.
 // new_n = (n / 3) * 3
 // res = n % 3
@@ -24,9 +32,7 @@ int main() {
     size_t n; cin >> n;
     size_t new_n = (n / 3) * 3;
     size_t res = n % 3;
-    // Generate numbers.
     size_t a = new_n, b = 0, c = 0;
-    // Distribute remainder.
     switch (res)
     {
     case 0:

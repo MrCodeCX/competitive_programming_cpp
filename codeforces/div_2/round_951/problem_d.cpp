@@ -26,7 +26,6 @@ using namespace std;
 string s; int n; int k;
 bool verify() {
 	bool val_return = true;
-	//verify_1
 	for (int i = 1; i < k; i++)
 	{
 		if (s[i] != s[0]) {
@@ -34,7 +33,6 @@ bool verify() {
 			break;
 		}
 	}
-	//verify_1
 	for (int i = 0; i < (n-k); i++)
 	{
 		if (s[i] == s[i + k]) {
@@ -67,7 +65,6 @@ bool case_1(int& pot, int counter_1, int& counter_2) {
 			if (pot == -1) pot = i;
 			counter_2++;
 			if ((counter_2 + counter_1 == k)) {
-				//Verificacion extra 
 				bool value_extra = s[i] != s[i + 1];
 				if (value_extra == false) {
 					if (i + k < n) {
@@ -124,14 +121,11 @@ int change() {
 		else break;
 	}
 	if (counter_1 != k) {
-		// Case 1: find a complete substring.
 		int pot = -1; int counter_2 = 0;
 		bool value_case = case_1(pot, counter_1, counter_2);
-		// Case 2: find a double pair, a double alternating group.
 		if (value_case == false) {
 			value_case = case_2(pot, counter_1, counter_2);
 		}
-		// Hacer cambio
 		if (value_case) {
 			change_s(pot + counter_2);
 			p_return = (pot + counter_2);
@@ -139,7 +133,6 @@ int change() {
 	}
 	else {
 		int pot = -1; int counter_2 = 0;
-		// Case 2: find a double pair, a double alternating group.
 		bool value_case = case_2(pot, counter_1, counter_2);
 		if (value_case) {
 			change_s(pot + counter_2);
@@ -153,27 +146,20 @@ int change() {
 }
  
 int main() {
-	vector<int> vect_sol;
 	int t; cin >> t;
 	while (t--) {
 		cin >> n; cin >> k; cin >> s;
-		// Greedy: inspect the last digits and look for a connection. If there is more than one, it is impossible.
 		int p = -1;
 		if (n == k) {
 			if (verify()) p = n;
 		}
 		else {
-			// Verify.
 			p = change();
 			if (p != -1) {
 				if (verify() == false) p = -1;
 			}
 		}
-		vect_sol.push_back((int)p);
-	}
-	for (int i = 0; i < vect_sol.size(); i++)
-	{
-		cout << vect_sol[i] << endl;
+		cout << p << endl;
 	}
 	return 0;
 }

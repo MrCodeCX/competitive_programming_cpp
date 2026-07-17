@@ -2,6 +2,14 @@
 
 using namespace std;
 
+// Problem: Codeforces Round 531 (Div. 3), A - Integer Sequence Dividing
+// Link: https://codeforces.com/contest/1102/problem/A
+//
+// Summary:
+// Split the numbers from 1 to n into two groups so that the absolute difference
+// between their sums is as small as possible.
+//
+// Solve:
 // First, by Euler-style intuition, symmetric pairs can be formed:
 // 1 ... n
 // n ... 1
