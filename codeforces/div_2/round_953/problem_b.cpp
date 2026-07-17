@@ -23,7 +23,7 @@ int main() {
 		cin >> n >> a >> b;
 
 		int k = min(n, max(0, b - a));
-		long long sol = n * a + k * (b - a) - k * (k - 1) / 2;
+		long long sol = 1LL * n * a + 1LL * k * (b - a) - 1LL * k * (k - 1) / 2;
 		cout << sol << endl;
 	}
 	return 0;

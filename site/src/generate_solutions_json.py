@@ -59,10 +59,20 @@ def extract_line(text, title):
 	return match.group(1).strip() if match else ""
 
 
+def load_sample_tests(src_dir):
+	sample_tests_path = src_dir / "sample_tests.json"
+	if not sample_tests_path.exists():
+		return {}
+
+	data = json.loads(sample_tests_path.read_text())
+	return data.get("samples", {})
+
+
 def main():
 	src_dir = pathlib.Path(__file__).resolve().parent
 	root = src_dir.parents[1]
 	manifest = src_dir / "solutions.json"
+	sample_tests = load_sample_tests(src_dir)
 
 	items = []
 	for source in sorted((root / "codeforces").rglob("*.cpp")):
@@ -79,6 +89,7 @@ def main():
 			"link": extract_line(text, "Link"),
 			"summary": extract_block(text, "Summary"),
 			"solve": extract_block(text, "Solve"),
+			"sample": sample_tests.get(artifact_id),
 			"js": f"wasm/{artifact_id}.js",
 		})
 

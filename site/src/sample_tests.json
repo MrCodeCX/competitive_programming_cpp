@@ -1,0 +1,185 @@
+{
+  "description": "Static site samples. Each entry is one valid input and the output produced by the matching C++ solution.",
+  "samples": {
+    "codeforces_div_2_round_299_problem_b": {
+      "input": "447\n",
+      "output": "8\n"
+    },
+    "codeforces_div_2_round_332_problem_d": {
+      "input": "1\n",
+      "output": "1\n1 1\n"
+    },
+    "codeforces_div_2_round_357_problem_b": {
+      "input": "1234\n",
+      "output": "YES\n"
+    },
+    "codeforces_div_2_round_511_problem_a": {
+      "input": "12\n",
+      "output": "10 1 1\n"
+    },
+    "codeforces_div_2_round_672_problem_b": {
+      "input": "2\n5\n1 2 3 4 7\n4\n8 9 10 15\n",
+      "output": "2\n6\n"
+    },
+    "codeforces_div_2_round_676_problem_a": {
+      "input": "3\n1 2\n3 5\n10 7\n",
+      "output": "3\n6\n13\n"
+    },
+    "codeforces_div_2_round_936_problem_a": {
+      "input": "3\n3\n1 2 2\n5\n1 1 2 2 3\n4\n5 5 5 6\n",
+      "output": "2\n2\n2\n"
+    },
+    "codeforces_div_2_round_940_problem_b": {
+      "input": "3\n1 5\n4 128\n5 13\n",
+      "output": "5\n127 1 0 0 \n7 6 0 0 0 \n"
+    },
+    "codeforces_div_2_round_951_problem_a": {
+      "input": "3\n3\n1 2 3\n5\n5 1 4 2 3\n2\n10 10\n",
+      "output": "1\n2\n9\n"
+    },
+    "codeforces_div_2_round_951_problem_c": {
+      "input": "3\n3\n2 3 4\n2\n2 2\n3\n3 3 3\n",
+      "output": "-1\n-1\n-1\n"
+    },
+    "codeforces_div_2_round_951_problem_d": {
+      "input": "3\n4 2\n0011\n4 2\n0101\n6 3\n000111\n",
+      "output": "4\n-1\n6\n"
+    },
+    "codeforces_div_2_round_953_problem_a": {
+      "input": "3\n3\n1 2 3\n4\n9 1 7 2\n2\n5 10\n",
+      "output": "5\n11\n15\n"
+    },
+    "codeforces_div_2_round_953_problem_b": {
+      "input": "7\n4 4 5\n5 5 9\n10 10 5\n5 5 11\n1000000000 1000000000 1000000000\n1000000000 1000000000 1\n1000 1 1000\n",
+      "output": "17\n35\n100\n45\n1000000000000000000\n1000000000000000000\n500500\n"
+    },
+    "codeforces_div_2_round_953_problem_d": {
+      "input": "2\n4 3\n1 2 5 3\n5 10\n3 8 2 6 5\n",
+      "output": "1 1 0 3 \n0 1 2 3 4 \n"
+    },
+    "codeforces_div_2_round_968_problem_a": {
+      "input": "3\n3\naba\n4\nabca\n2\naa\n",
+      "output": "NO\nNO\nNO\n"
+    },
+    "codeforces_div_2_round_968_problem_b": {
+      "input": "3\n5\n1 2 3 4 5\n4\n10 1 2 3\n1\n7\n",
+      "output": "3\n3\n7\n"
+    },
+    "codeforces_div_2_round_968_problem_c": {
+      "input": "3\n5\naabcd\n6\naabbcc\n4\nzzzz\n",
+      "output": "abcda\nabcabc\nzzzz\n"
+    },
+    "codeforces_div_2_round_969_problem_a": {
+      "input": "3\n1 10\n2 8\n7 7\n",
+      "output": "2\n1\n0\n"
+    },
+    "codeforces_div_2_round_969_problem_b": {
+      "input": "1\n5 4\n1 3 5 7 9\n+ 1 10\n- 6 9\n+ 8 12\n- 1 100\n",
+      "output": "10 10 11 10 \n"
+    },
+    "codeforces_div_3_round_479_problem_c": {
+      "input": "5 3\n1 2 3 4 5\n",
+      "output": "3\n"
+    },
+    "codeforces_div_3_round_486_problem_a": {
+      "input": "5 3\n1 2 1 3 4\n",
+      "output": "YES\n1 2 4 \n"
+    },
+    "codeforces_div_3_round_531_problem_a": {
+      "input": "5\n",
+      "output": "1\n"
+    },
+    "codeforces_div_3_round_925_problem_a": {
+      "input": "4\n3\n24\n26\n78\n",
+      "output": "aaa\naav\naax\nzzz\n"
+    },
+    "codeforces_div_3_round_946_problem_a": {
+      "input": "4\n1 0\n7 1\n15 2\n30 8\n",
+      "output": "1\n1\n2\n5\n"
+    },
+    "codeforces_div_3_round_946_problem_b": {
+      "input": "3\n5\nabcba\n4\naaaa\n6\nabcdef\n",
+      "output": "cbabc\naaaa\nfedcba\n"
+    },
+    "codeforces_div_3_round_946_problem_d": {
+      "input": "4\n4\nNSEW\n2\nNS\n4\nNNSS\n6\nNNEESS\n",
+      "output": "RRHH\nNO\nRHRH\nRHRHRH\n"
+    },
+    "codeforces_div_3_round_946_problem_e": {
+      "input": "2\n3 10\n0 5\n10 10\n20 100\n2 5\n0 1\n10 10\n",
+      "output": "105\n1\n"
+    },
+    "codeforces_div_4_round_1050_problem_a": {
+      "input": "3\n5 1\n5 2\n10 7\n",
+      "output": "5\n0\n10\n"
+    },
+    "codeforces_div_4_round_1050_problem_b": {
+      "input": "2\n3 2\n1 2\n1 2 3\n4 5\n1 1\n10 20\n5\n6\n",
+      "output": "5\n2\n"
+    },
+    "codeforces_div_4_round_1050_problem_c": {
+      "input": "2\n2 10\n3 1\n7 0\n1 5\n2 1\n",
+      "output": "9\n4\n"
+    },
+    "codeforces_div_4_round_640_problem_c": {
+      "input": "4\n3 7\n4 12\n2 100\n10 25\n",
+      "output": "10\n15\n199\n27\n"
+    },
+    "codeforces_div_4_round_944_problem_b": {
+      "input": "3\naaaa\ncode\nab\n",
+      "output": "NO\nYES\nocde\nYES\nba\n"
+    },
+    "codeforces_div_4_round_944_problem_c": {
+      "input": "3\n1 5 2 6\n1 3 5 7\n10 2 3 9\n",
+      "output": "YES\nNO\nNO\n"
+    },
+    "codeforces_div_4_round_944_problem_f": {
+      "input": "3\n1\n2\n5\n",
+      "output": "8\n16\n40\n"
+    },
+    "codeforces_div_4_round_952_problem_a": {
+      "input": "3\nabc def\naaa bbb\nxyz mno\n",
+      "output": "dbc aef\nbaa abb\nmyz xno\n"
+    },
+    "codeforces_div_4_round_952_problem_b": {
+      "input": "4\n3\n10\n15\n30\n",
+      "output": "3\n2\n2\n2\n"
+    },
+    "codeforces_div_4_round_952_problem_c": {
+      "input": "3\n5\n1 1 2 4 8\n4\n0 0 0 0\n3\n1 2 3\n",
+      "output": "4\n4\n1\n"
+    },
+    "codeforces_div_4_round_952_problem_d": {
+      "input": "2\n5 5\n.....\n..#..\n.###.\n..#..\n.....\n3 3\n.#.\n###\n.#.\n",
+      "output": "3 3\n2 2\n"
+    },
+    "codeforces_div_4_round_952_problem_e": {
+      "input": "3\n3 3 3 8\n5 4 3 6\n10 10 10 1\n",
+      "output": "8\n27\n1000\n"
+    },
+    "codeforces_global_round_global_2_problem_e": {
+      "input": "4\n3 2 5 1\n",
+      "output": "3\n"
+    },
+    "codeforces_global_round_global_26_problem_a": {
+      "input": "3\n3\n1 1 1\n4\n1 1 2 3\n3\n5 5 6\n",
+      "output": "NO\nYES\nRBBB\nYES\nRBB\n"
+    },
+    "codeforces_global_round_global_26_problem_b": {
+      "input": "4\n110\n1110\n1009\n129\n",
+      "output": "YES\nYES\nNO\nNO\n"
+    },
+    "codeforces_global_round_global_26_problem_c_1": {
+      "input": "3\n3\n1 -2 3\n4\n-1 -2 -3 -4\n5\n0 1 -1 2 -2\n",
+      "output": "4\n10\n0\n"
+    },
+    "codeforces_global_round_global_26_problem_c_2": {
+      "input": "3\n3\n1 -2 3\n4\n-1 -2 -3 -4\n5\n0 1 -1 2 -2\n",
+      "output": "4\n1\n32\n"
+    },
+    "codeforces_special_8vc_venture_cup_2017_elimination_round_problem_a": {
+      "input": "3\n",
+      "output": "1\n"
+    }
+  }
+}
