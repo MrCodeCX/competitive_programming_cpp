@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Competitive Programming C++ Archive</title>
+	<link rel="icon" href="favicon.svg" type="image/svg+xml">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<main class="page">
+		<section class="workspace" aria-label="Competitive programming solutions explorer">
+			<header class="topbar">
+				<div>
+					<p class="kicker">Codeforces solutions archive</p>
+					<h1>Competitive Programming C++</h1>
+					<p class="lead">A curated set of standalone C++ solutions with problem summaries, solution notes, source code, and runnable WebAssembly samples.</p>
+				</div>
+				<div class="top-actions" aria-label="Project links">
+					<a class="button button-primary" href="https://codeforces.com/profile/ThMrCode" rel="noreferrer">Codeforces Profile</a>
+					<a class="button" href="https://github.com/MrCodeCX/competitive_programming_cpp" rel="noreferrer">GitHub</a>
+				</div>
+				<div class="stats" aria-label="Archive statistics">
+					<div><strong id="statTotal">45</strong><span>solutions</span></div>
+					<div><strong id="statRunnable">45</strong><span>runnable samples</span></div>
+					<div><strong>C++17</strong><span>single-file code</span></div>
+					<div><strong>WASM</strong><span>on-demand runner</span></div>
+				</div>
+			</header>
+
+			<aside class="index-panel" aria-label="Solution index">
+				<div class="panel-head">
+					<div>
+						<p class="kicker">Explore</p>
+						<h2>Problem Index</h2>
+					</div>
+					<span id="resultCount" class="count-pill">0</span>
+				</div>
+
+				<label class="search-field">
+					<span>Search</span>
+					<input id="searchInput" type="search" placeholder="Title, round, source path">
+				</label>
+
+				<div id="divisionFilters" class="filter-row" aria-label="Division filters"></div>
+				<div id="solutionList" class="solution-list" aria-label="Solutions"></div>
+			</aside>
+
+			<section class="detail-panel" aria-label="Selected solution details">
+				<div class="detail-header">
+					<div>
+						<p id="selectedDivision" class="kicker">Loading</p>
+						<h2 id="problemTitle">Loading solutions...</h2>
+					</div>
+					<a id="problemLink" class="button button-small" href="#" rel="noreferrer">Problem</a>
+				</div>
+
+				<div class="meta-strip" aria-label="Selected problem metadata">
+					<div><span>Source</span><strong id="sourcePath">-</strong></div>
+					<div><span>Round</span><strong id="roundLabel">-</strong></div>
+					<div><span>Artifact</span><strong id="artifactId">-</strong></div>
+				</div>
+
+				<div class="reader-grid">
+					<article class="note-block">
+						<p class="kicker">Problem Summary</p>
+						<p id="summaryText">-</p>
+					</article>
+					<article class="note-block">
+						<p class="kicker">Solution Notes</p>
+						<p id="solveText">-</p>
+					</article>
+				</div>
+
+				<section class="code-card" aria-label="Source code viewer">
+					<div class="code-head">
+						<div>
+							<p class="kicker">Source Viewer</p>
+							<h3 id="codeTitle">C++ solution</h3>
+						</div>
+						<div class="code-actions">
+							<button id="copyCode" class="button button-small" type="button">Copy Code</button>
+							<a id="sourceLink" class="button button-small" href="#" rel="noreferrer">Open Source</a>
+						</div>
+					</div>
+					<pre id="codeView"><code>Loading source...</code></pre>
+				</section>
+			</section>
+
+			<aside class="runner-panel" aria-label="Sample runner">
+				<section class="runner-card">
+					<div class="panel-head">
+						<div>
+							<p class="kicker">Run Sample</p>
+							<h2>WebAssembly Runner</h2>
+						</div>
+						<span id="runStatus" class="status-pill">Ready</span>
+					</div>
+					<p class="runner-copy">Runs the selected compiled C++ solution in the browser with the stored sample input.</p>
+					<button id="runSample" class="button button-primary run-button" type="button">Run Sample</button>
+				</section>
+
+				<section class="io-card">
+					<div class="io-head">
+						<p class="kicker">Input</p>
+						<button id="copyInput" class="text-button" type="button">Copy</button>
+					</div>
+					<pre id="sampleInput">-</pre>
+				</section>
+
+				<section class="io-card">
+					<p class="kicker">Expected Output</p>
+					<pre id="expectedOutput">-</pre>
+				</section>
+
+				<section class="io-card output-card">
+					<div class="io-head">
+						<p class="kicker">Actual Output</p>
+						<span id="matchBadge" class="match-badge">Not run</span>
+					</div>
+					<pre id="actualOutput">Run the sample to execute the compiled solution.</pre>
+				</section>
+			</aside>
+		</section>
+	</main>
+
+	<script src="app.js"></script>
+</body>
+</html>
