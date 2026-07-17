@@ -3,6 +3,25 @@
 #include <vector>
 #include <cmath>
 using namespace std;
+
+// Problem: Codeforces Round 951 (Div. 2), D - Fixing a Binary String
+// Link: https://codeforces.com/contest/1979/problem/D
+//
+// Summary:
+// For each test case, a binary string s of length n and an integer k are given.
+// We must choose p and apply exactly one operation: reverse the prefix of length
+// p, then move that reversed prefix to the end. The resulting string must be
+// k-proper: its first k characters are equal, and every character differs from
+// the character k positions after it. If no valid p exists, print -1.
+//
+// Solve:
+// A k-proper binary string is formed by blocks of length k, where each block has
+// equal characters and adjacent blocks have opposite characters. This solution
+// tries to choose p by looking at the suffix that will stay at the front after
+// the operation and the reversed prefix that will be moved to the end. It counts
+// the final run of equal characters, searches for a compatible cut position, and
+// then verifies the produced string with the k-proper conditions. If no verified
+// cut is found, the answer is -1.
  
 string s; int n; int k;
 bool verify() {
