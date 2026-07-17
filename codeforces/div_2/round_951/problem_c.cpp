@@ -7,7 +7,7 @@ int array_primos[] = { 2,3,5,7,11,13,17,19 };
 int array_k[55];
 int array_k_aux[55];
 int mcm(int s) {
-	// sacar mcm del array_k;
+	// Get the LCM of array_k.
 	int mcm_ = 1;
 	for (int j = 0; j < n_primos; j++)
 	{

@@ -3,7 +3,9 @@
 #include <map>
 using namespace std;
 
-// POR ALGUNA RAZON VOTA ERROR PONIENDO -1 EN EL INDICE 4618, no se porque, segun lo leo todo esta bien
+// KNOWN ISSUE:
+// This attempt has a known failing case where it outputs -1 at index 4618.
+// The geometric grouping idea may still be useful, but the implementation has an unresolved edge-case bug.
 const int max_size = 100000;
 struct Point {
 	int x;
@@ -47,8 +49,8 @@ vector<int> solve(map<int, map<int, Point>>& m_1, map<int, map<int, Point>>& m_2
 			if (m_1[pair_1.first][pair_2.first + d].indice != -1) {
 				Point p_1 = pair_2.second;
 				Point p_2 = m_1[pair_1.first][pair_2.first + d];
-				// Si existe el comun, preguntar los 3 casos
-				// Primer caso
+				// If the common point exists, check the 3 cases.
+				// First case.
 				if (m_2[p_1.y - p_1.x][get_d_2(p_1.x, p_1.y) + d].indice != -1) {
 					sol_1 = p_1.indice;
 					sol_2 = p_2.indice;
@@ -63,7 +65,7 @@ vector<int> solve(map<int, map<int, Point>>& m_1, map<int, map<int, Point>>& m_2
 					val_bool = true;
 					break;
 				}
-				// Primer caso Alternado
+				// First case, alternated.
 				if (m_2[p_2.y - p_2.x][get_d_2(p_2.x, p_2.y) + d].indice != -1) {
 					sol_1 = p_1.indice;
 					sol_2 = p_2.indice;
@@ -79,7 +81,7 @@ vector<int> solve(map<int, map<int, Point>>& m_1, map<int, map<int, Point>>& m_2
 					val_bool = true;
 					break;
 				}
-				// Segundo Caso
+				// Second case.
 				if (d % 4 == 0) {
 					if (m_1[p_1.y + p_1.x + d][get_d_1(p_1.x + d * 0.75, p_1.y + d * 0.25)].indice != -1) {
 						sol_1 = p_1.indice;
@@ -101,14 +103,14 @@ vector<int> solve(map<int, map<int, Point>>& m_1, map<int, map<int, Point>>& m_2
 			}
 		}
 	}
-	// Segundo Caso Alternado
+	// Second case, alternated.
 	for (pair<int, map<int, Point>> pair_1 : m_2) {
 		if (val_bool) break;
 		for (pair<int, Point> pair_2 : pair_1.second) {
 			if (m_2[pair_1.first][pair_2.first + d].indice != -1) {
 				Point p_1 = pair_2.second;
 				Point p_2 = m_2[pair_1.first][pair_2.first + d];
-				// Segundo Caso Alternado
+				// Second case, alternated.
 				if (d % 4 == 0) {
 					if (m_2[p_1.y - p_1.x - d][get_d_2(p_1.x + d * 0.75, p_1.y - d * 0.25)].indice != -1) {
 						sol_1 = p_1.indice;
@@ -146,7 +148,7 @@ int main() {
 			p.x = x;
 			p.y = y;
 			p.indice = i;
-			// Primera Key x + y, segunda Key distancia manhatan a la esquina inferior izquierda
+			// First key: x + y. Second key: Manhattan distance to the lower-left corner.
 			map_1[y + x][get_d_1(p.x, p.y)] = p;
 			map_2[y - x][get_d_2(p.x, p.y)] = p;
 		}

@@ -2,17 +2,17 @@
 
 using namespace std;
 
-// Primero se demuestra por intuicion de Euler que se pueden formar pares simetricos
+// First, by Euler-style intuition, symmetric pairs can be formed:
 // 1 ... n
 // n ... 1
-// Los pares (1, n), (2, (n-1)), etc,
-// Cuando se puedan formar igual cantidad de pares para ambos entonces |SUM(A) - SUM(B)| = 0, esto pasa cuando n es multiplo de 4
-// Cuando n no es multiplo de 4, res = n%4, entonces, siendo new_n = n-res
-// Se pueden separar los primeros "res" numeros de los siguientes "new_n" numeros, con los new_n se pueden formar los grupos A B de x = 0
-// Es necesario entonces agregar los otros res numeros a los grupos A B
-// res = 1 -> agregar 1, lo agregamos a cualquier grupo; y x = 1
-// res = 2 -> agregar 1,2, agregamos 1 a un grupo y 2 al otro; y x = 1
-// res = 3 -> agregar 1,2,3, agregamos 1 y 2 a un grupo y 3 al otro; y x = 0
+// Pairs are (1, n), (2, (n-1)), etc.
+// When the same number of pairs can be formed for both groups, |SUM(A) - SUM(B)| = 0; this happens when n is a multiple of 4.
+// When n is not a multiple of 4, res = n%4 and new_n = n-res.
+// The first "res" numbers can be separated from the following "new_n" numbers; with new_n, groups A and B can be formed with x = 0.
+// Then the remaining res numbers must be added to groups A and B.
+// res = 1 -> add 1 to any group; x = 1
+// res = 2 -> add 1,2; add 1 to one group and 2 to the other; x = 1
+// res = 3 -> add 1,2,3; add 1 and 2 to one group and 3 to the other; x = 0
 
 int main() {
     size_t n; cin >> n;

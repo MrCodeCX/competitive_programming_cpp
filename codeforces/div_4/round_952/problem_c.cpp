@@ -21,9 +21,9 @@ int main() {
 		int candidato_ant = array_a[0];
 		for (int i = 1; i < n; i++)
 		{
-			// Existe elemento que sea la mitad de la suma?, de existir seria el maximo
-			// si en uno cumple en el siguiente solo estan de candidatos este mismo u el nuevo
-			// El nuevo candidato ant debe ser el mayor
+			// Is there an element equal to half of the sum? If it exists, it would be the maximum.
+			// If it works in one step, then in the next step the only candidates are this same value or the new one.
+			// The new previous candidate must be the maximum.
 			long long sum = array_a[i];
 			long long candidato_new = (array_a[i] - array_a[i - 1]);
 			if (2 * candidato_ant == sum) cant_i++;

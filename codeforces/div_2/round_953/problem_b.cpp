@@ -10,13 +10,14 @@ int main() {
 	int t; cin >> t;
 	while (t--) {
 		cin >> n; cin >> a; cin >> b;
-		// beneficio = (n-k)*a + b*k - k(k-1) / 2; es parabola inversa, verificar si el maximo esta en medio, sino estara en costados
+		// profit = (n-k)*a + b*k - k(k-1) / 2; it is an inverted parabola.
+		// Check whether the maximum is in the middle; otherwise, it is on an endpoint.
 		long long max_ = n;
 		if (n > b) max_ = b;
 		long long benify_max = n * a;
 		if (benify(max_) > benify_max)  benify_max = benify(max_);
 		long long middle = (int)(b - a);
-		// ratius para no calcular mucho
+		// Ratios to avoid too much calculation.
 		for (int i = 0; i < 5; i++)
 		{
 			if ((i + middle) <= n && (i + middle) >= 0) {

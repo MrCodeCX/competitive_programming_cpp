@@ -2,17 +2,17 @@
 
 using namespace std;
 
-// Cualquier movimiento se puede reducir en segmenos de 3x3 partiendo desde la central
-// Para llegar a las casillas aristas se necesita 1
-// Para llegar a las esquinas sea que pases arista - esquina
+// Any movement can be reduced to 3x3 segments starting from the center.
+// Reaching edge cells requires 1 step.
+// To reach corners, the path goes through edge -> corner.
 // o que pases en diagonal por el vertice hasta la esquina, se necesita 2
 
-// Entonces se deduce que para llegar a cada segmento habra la cantidad de cruces de distancia euclidea (respecto a segmentos)
-// Ademas de que la ruta de ir primero todo derecha y luego todo arriba es una ruta valida
+// Therefore, reaching each segment requires the number of Euclidean-distance crossings between segments.
+// Also, the route that goes fully right first and then fully up is valid.
 
 // La cantidad de segmentos en x es (m+1), iniciamos en el primer segmento, queremos llegar al (m+1)
 // Nos topamos con m cruces
-// Analisis similar para llegar desde la esquina inferior derecha a la esquina superior derecha, n cruces
+// Similar analysis for going from the lower-right corner to the upper-right corner: n crossings.
 // solve = n + m
 
 int main() {

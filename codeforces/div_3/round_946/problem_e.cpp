@@ -19,7 +19,7 @@ int main() {
 			cin >> c[i]; cin >> h[i];
 			h_max += h[i];
 		}
-		// Estados de feliciad desde 0 hasta h_max
+		// Happiness states from 0 to h_max.
 		vector<ll> dp = vector<ll>((h_max + 1), NP);
 		dp[0] = 0;
 		for (int i = 0; i < m; i++)

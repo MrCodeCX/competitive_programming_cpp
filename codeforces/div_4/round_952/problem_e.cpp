@@ -81,7 +81,7 @@ void recursion_2(int pt_2, long long fact_1, long long fact_2, vector<int> vect_
 		}
 	}
 	else {
-		// Ya tenemos el vect_resto_2 que implica tener los dos primeros factores, el ultimo queda determinado, comparar con el max anterior
+		// vect_resto_2 already implies the first two factors; the last one is determined, compare with the previous maximum.
 		if (fact_2 <= max_2) {
 			// Calcular fact_3
 			long long fact_3 = 1;
@@ -90,7 +90,7 @@ void recursion_2(int pt_2, long long fact_1, long long fact_2, vector<int> vect_
 				fact_3 *= pow_long(vect_primos[i], vect_resto_2[i]);
 			}
 			if (fact_3 <= max_3) {
-				// Comparar
+				// Compare.
 				long long val = valor(fact_1,fact_2,fact_3);
 				if (val > max_solution) max_solution = val;
 			}
@@ -112,7 +112,7 @@ void recursion_1(int pt, long long fact_1, vector<int> vect_resto) {
 	}
 	else {
 		// Ya tenemos el vect resto que es = vect_num - vect_factor
-		// Mandamos recursion 2 solo si fact_1 cumple condicion
+		// Call recursion 2 only if fact_1 satisfies the condition.
 		if (fact_1 <= max_1) recursion_2(0, fact_1, 1, vect_resto, vect_resto);
 	}
 }
@@ -120,7 +120,7 @@ int main() {
 	int t; cin >> t;
 	while (t--) {
 		cin >> max_1; cin >> max_2; cin >> max_3; long long k; cin >> k;
-		// Vector solo factores necesarios
+		// Vector with only the needed factors.
 		if (k != 1) {
 			traduct_primos(k);
 			max_solution = 0;

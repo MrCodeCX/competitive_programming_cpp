@@ -4,12 +4,12 @@
 using namespace std;
 #define LL long long
 
-// Los cuadrados van desde size 1 hasta min_side, y se extienden por todo max_side
+// Squares range from size 1 to min_side and extend across max_side.
 
-// Solo es necesario analizar combinaciones de n < m, tal que total = analisis*2
+// It is only necessary to analyze combinations with n < m, so total = analysis * 2.
 
-// Densidad de Cuadrados Laterales 1 + max_side - side = 1 + c_2 - side
-// Densidad de Cuadrados Verticales 1 + min_side - side = 1 + c_1 - side
+// Horizontal square density: 1 + max_side - side = 1 + c_2 - side
+// Vertical square density: 1 + min_side - side = 1 + c_1 - side
 
 // side 1 -> min_side
 // Squares = SUM (1 + c_1 - side) * (1 + c_2 - side)
@@ -17,11 +17,11 @@ using namespace std;
 // Squares = (1+c_1)*(1+c_2)*c_1 - (2+c_1+c_2)*c_1*(1+c_1)/2 + c_1*(1+c_1)*(2*c_1+1)/6
 // Squares = c_1*(1+c_1)*(1+3*c_2 -c_1)/6
 
-// Obtenemos c_2 en funcion de c_1 y squares 
+// Get c_2 as a function of c_1 and squares.
 // c_2 = (c_1 + (squares*6)/(c_1*(c_1+1)) - 1) / 3
 // min_c_1 = 1
-// No es necesario determinar el maximo, basta saber que lo encontrare en un orden O(n^(1/3))
-// Iterar mientras c_1 < c_2 (c_1 = n, c_2 = m para n <= m)
+// It is not necessary to determine the maximum; it is enough to know it will be found in O(n^(1/3)).
+// Iterate while c_1 < c_2 (c_1 = n, c_2 = m for n <= m).
 
 LL get_c_2(LL squares, LL c_1) {
     return (c_1 + (squares*6)/(c_1*(c_1+1)) - 1) / 3;

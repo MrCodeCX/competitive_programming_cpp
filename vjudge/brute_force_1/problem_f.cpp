@@ -2,13 +2,13 @@
 
 using namespace std;
 
-// Para cada caso el analisis de x es exclusivamente por bit, ya que el cambio de un bit no afecta al siguiente
-// Para minimizar la suma se requiere minimizar cada bit
+// For each case, x can be analyzed bit by bit because changing one bit does not affect the next one.
+// To minimize the sum, each bit must be minimized independently.
 // xxxx1 yyyy1 zzzzx -> x = 1
 // xxxx1 yyyy0 zzzzx -> x = 1 o 0
 // xxxx0 yyyy0 zzzzx -> x = 0
 
-// Tomando el segundo caso como 0, se tiene x = (a & b)
+// Taking the second case as 0 gives x = (a & b).
 
 
 int main() {

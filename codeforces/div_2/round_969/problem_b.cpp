@@ -6,9 +6,11 @@ using namespace std;
 int main() {
 	int t; cin >> t;
 	while (t--) {
-		// Solo importa el mayor,
-		// Hacia adelante, si alguno llega a superar al mayor primero debe llegar a ser igual al mayor y en ese momento el mayor original y este nuevo seguiran la misma trayectoria y mismos valores 
-		// Hacia atras, nunca dejara de ser el mayor pues si llega a bajar hasta encontrarse con otro numero y luego manda a bajar mas, el otro numero igual, tambien bajara, el mayor original y este nuevo seguiran la misma trayectoria y mismos valores 
+		// Only the maximum matters.
+		// Going forward, if another value ever exceeds the maximum, it must first become equal to it;
+		// from that moment, the original maximum and the new value follow the same trajectory and values.
+		// Going backward, it never stops being the maximum. If it decreases until meeting another number
+		// and then decreases further, the other number also decreases, so both follow the same trajectory and values.
 		int n; cin >> n; int m; cin >> m;
 		int mayor = 0;
 		for (int i = 0; i < n; i++)

@@ -1,5 +1,24 @@
 #include <iostream>
 using namespace std;
+
+// Problem: Codeforces Round 936 (Div. 2), A - Median of an Array
+// Link: https://codeforces.com/contest/1946/problem/A
+//
+// Summary:
+// For each test case, an array of n integers is given. For this problem, the
+// median is the element at index (n - 1) / 2 after sorting the array in
+// non-decreasing order.
+// In one operation, any single element can be increased by 1. The goal is to
+// find the minimum number of operations needed to make the array median
+// strictly larger than its initial value.
+//
+// Solve:
+// Sort the array and locate the current median. To make the median increase,
+// every occurrence equal to the median from the median position to the right
+// must be increased at least once; otherwise, one of those equal values would
+// still occupy the median position after sorting. Therefore, the answer is the
+// size of that equal-value block. This implementation sorts with radix sort and
+// then counts that block.
  
 using ll = long long;
 const int N = 100050;
@@ -24,7 +43,7 @@ int find_grade() {
 	return count;
 }
 void radix_sort(int grade) {
-	// Para digitos 0 1 ... 9
+	// For digits 0, 1, ..., 9.
 	int grade_aux = 0;
 	ll pow_1 = 1; ll pow_2 = 10;
 	while (grade_aux < grade)

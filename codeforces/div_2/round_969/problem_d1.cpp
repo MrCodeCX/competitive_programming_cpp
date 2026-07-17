@@ -2,46 +2,48 @@
 #include <vector>
 using namespace std;
  
-// Nota, No se porque falla en el test 24, luego lo reviso, pero en general esta correcto
+// KNOWN ISSUE:
+// This attempt is known to fail on test 24.
+// The MEX-based reasoning below captures the intended approach, but the implementation has an unresolved edge-case bug.
 
 /*
-* ANALISIS PREVIO
-// Estructura que resume una cadena con el valor mex
-// Si la cadena no tiene huecos de 1 complete = -1 (no se puede completar)
-// La cadena entonces solo dara su valor de mex, o mex + 1 si x = mex;
-// Si la cadena tiene hueco de 1 complete = valor del hueco
-// Si x tiene el valor del hueco la cadena dara su valor de mex
-// Si x no tiene el valor del hueco la cadena dara el valor del hueco 
+* PREVIOUS ANALYSIS
+// Structure that summarizes a sequence with its mex value.
+// If the sequence has no gap of size 1, complete = -1 (it cannot be completed).
+// The sequence will then only give its mex value, or mex + 1 if x = mex.
+// If the sequence has a gap of size 1, complete = gap value.
+// If x has the gap value, the sequence gives its mex value.
+// If x does not have the gap value, the sequence gives the gap value.
  
-Estructura de referencia pues ya no es necesaria despues
+Reference structure; no longer needed later.
 struct Data {
 	int mex = 0;
 	int complete = -1;
 };
  
-// Las cadenas de un hueco son autocompletables y mex(x,cadena) sera:
-// Si x es el hueco -> dara su mex
-// Si x no es el hueco -> dara el hueco y luego dara su mex
+// One-gap sequences are self-completable, and mex(x, sequence) will be:
+// If x is the gap -> gives its mex.
+// If x is not the gap -> gives the gap and then gives its mex.
  
-// La cadena sin hueco (o hueco > 1) sera:
-// si x es el mex -> dara mex + 1
-// si x no es el mex -> dara mex y luego dara su mex + 1
+// A sequence without a gap (or with gap > 1) will be:
+// if x is the mex -> gives mex + 1.
+// if x is not the mex -> gives mex and then gives mex + 1.
  
  
-// analizar todas las cadenas y comparar la que tenga mayor mex 
-// En todos los casos, no importa el valor inicial de x pues tras una suboperacion
-// este siempre tomara el valor del hueco y luego mex (completables) 
-// del mex en cadenas completas y luego mex + 1 (completas)
+// Analyze all sequences and compare the one with the largest mex.
+// In all cases, the initial value of x does not matter because after a sub-operation
+// it will always take the gap value and then mex for completable sequences,
+// or mex and then mex + 1 for complete sequences.
  
-// Todo esto se resume en un vector que almacenara el mex de cada cadena que es
-// independiente de x inicial, en cadenas completas sera su mex + 1
-// en completables sera su mex tras completar primer hueco
+// All of this is summarized in a vector that stores each sequence's mex,
+// independent of the initial x. For complete sequences it is mex + 1;
+// for completable sequences it is the mex after completing the first gap.
 */
  
-// Ambos casos en realidad son el mismo
-// sacar el mex, agregarlo y luego el siguiente mex
-// forma mas rapida, hacer un counting hasta (lsize+1) que sera el maximo mex a alcanzar
-// si x > mexMax, se queda con x
+// Both cases are actually the same:
+// get the mex, add it, and then get the next mex.
+// Faster method: count up to (lsize+1), which is the maximum mex reachable.
+// If x > mexMax, it stays as x.
  
 int main() {
 	int t; cin >> t;
@@ -68,7 +70,7 @@ int main() {
 						value_hueco = false;
 					}
 					else {
-						// Encontro el segundo hueco, ahi queda entonces
+						// Found the second gap, so it stops here.
 						break;
 					}
 				}

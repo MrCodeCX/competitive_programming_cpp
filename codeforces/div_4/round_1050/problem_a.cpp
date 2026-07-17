@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// Si n es par la suma se anula, si n es impar vale x
+// If n is even, the sum cancels out; if n is odd, it equals x.
 
 int main() {
     size_t t; cin >> t;

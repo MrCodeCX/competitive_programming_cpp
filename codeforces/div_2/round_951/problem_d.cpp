@@ -105,10 +105,10 @@ int change() {
 		else break;
 	}
 	if (counter_1 != k) {
-		// 1 Caso (encontrar subcadena complete)
+		// Case 1: find a complete substring.
 		int pot = -1; int counter_2 = 0;
 		bool value_case = case_1(pot, counter_1, counter_2);
-		// 2 Caso (encontrar doble par) grupo dolbe alternado
+		// Case 2: find a double pair, a double alternating group.
 		if (value_case == false) {
 			value_case = case_2(pot, counter_1, counter_2);
 		}
@@ -120,7 +120,7 @@ int change() {
 	}
 	else {
 		int pot = -1; int counter_2 = 0;
-		// 2 Caso (encontrar doble par) grupo dolbe alternado
+		// Case 2: find a double pair, a double alternating group.
 		bool value_case = case_2(pot, counter_1, counter_2);
 		if (value_case) {
 			change_s(pot + counter_2);
@@ -138,13 +138,13 @@ int main() {
 	int t; cin >> t;
 	while (t--) {
 		cin >> n; cin >> k; cin >> s;
-		// Es Greedy, revisar los ultimos digitos buscar una conexion (si hay mas de una sera que es imposible)
+		// Greedy: inspect the last digits and look for a connection. If there is more than one, it is impossible.
 		int p = -1;
 		if (n == k) {
 			if (verify()) p = n;
 		}
 		else {
-			// Verificar
+			// Verify.
 			p = change();
 			if (p != -1) {
 				if (verify() == false) p = -1;

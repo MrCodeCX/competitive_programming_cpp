@@ -44,14 +44,14 @@ void show(vector<int> vect) {
 int main() {
 	int t; cin >> t;
 	while (t--) {
-		// Problema greedy, eliminar pareja de mayor/menor valor, entre 3 2, 2 3, 2 2
-		// no hay diferencia porque la operacion unicamente termina eliminando el 2 
-		// Similar para turtle, y piggy
-		// turtle -> elimina los minimos (seleccionando una pareja que contenga min)
-		// piggy -> elimina los maximos (seleccionando una pareja que contenga max)
-		// si ordenamos el array de menor a mayor, vemos que si van quitando
-		// minimo maximo minimo maximo ... y asi sucesivamente
-		// al final solo quedara la mediana (de ser par tocara el de la derecha central)
+		// Greedy problem: remove the pair with higher/lower value among 3 2, 2 3, 2 2.
+		// There is no difference because the operation only ends up removing the 2.
+		// Similar reasoning for turtle and piggy:
+		// turtle -> removes minimums by selecting a pair containing the minimum.
+		// piggy -> removes maximums by selecting a pair containing the maximum.
+		// If the array is sorted from low to high, removals become:
+		// minimum, maximum, minimum, maximum, and so on.
+		// In the end only the median remains. If the size is even, it is the right-middle element.
 		// Algoritmo de ordenamiento, radix sort
 		int n; cin >> n;
 		vector<int> a(n);

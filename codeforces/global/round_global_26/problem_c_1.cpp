@@ -25,16 +25,16 @@ int main() {
 		{
 			cin >> array_a[i];
 		}
-		// Algoritmo Voraz positivo y negativo, solo importa el maximo positivo y el maximo negativo al que se puede llegar en cada posicion, a partir de ell
+		// Positive and negative greedy algorithm: only the maximum positive and maximum negative reachable at each position matter.
 		vect_positive[0] = abs_(array_a[0]);
 		vect_negative[0] = array_a[0];
 		for (int i = 1; i < n; i++)
 		{
-			// Para el positivo i
+			// For positive i.
 			vect_positive[i] = max_(abs_(array_a[i] + vect_positive[i - 1]), abs_(array_a[i] + vect_negative[i - 1]));
 			vect_negative[i] = min_((array_a[i] + vect_positive[i - 1]), (array_a[i] + vect_negative[i - 1]));
 		}
-		// Para el ultimo
+		// For the last one.
 		cout << vect_positive[n - 1] << endl;
 	}
 	return 0;

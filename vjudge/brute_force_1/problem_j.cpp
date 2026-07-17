@@ -5,14 +5,15 @@
 using namespace std;
 
 
-// A travez de las permutaciones se pueden formar todos los lucky numbers de k cifras
-// Entonces la posicion de n = cantidad de luckys de cifras inferiores + posicion dentro de las cifras k = get_cypher(n)
+// Through permutations, all lucky numbers with k digits can be formed.
+// Therefore, position(n) = count of lucky numbers with fewer digits + position within the k-digit group, where k = get_cypher(n).
 
-// Si analizamos en orden los lucky number de k cifras
-// 444 447 474 477 744 747 774 777 vemos que se asemeja mucho al sistema binario
-// 000 001 010 011 100 101 110 111, y su representacion en binario coincide con su (posicion entre los lucky number de k cifras) + 1
+// If we analyze the k-digit lucky numbers in order:
+// 444 447 474 477 744 747 774 777, they strongly resemble the binary system:
+// 000 001 010 011 100 101 110 111. Their binary representation matches their
+// position among the k-digit lucky numbers + 1.
 
-// La suma de posiciones hasta x cifras es SUM 2^i (i: 1 -> (get_cypher(n) - 1)) = 1U << get_cypher(n) - 2
+// The sum of positions up to x digits is SUM 2^i (i: 1 -> (get_cypher(n) - 1)) = 1U << get_cypher(n) - 2.
 
 //if(s[i] == '4') ret_bin = ret_bin << 1 + 0;
 //else ret_bin = ret_bin << 1 + 1;

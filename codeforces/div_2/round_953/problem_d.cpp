@@ -29,9 +29,9 @@ void start() {
 }
  
 int main() {
-	// Formas de ganar para un candidato
-	// si no es el de mas votos, quitar todos los candidatos antes que el (todos para que los indecisos se agreguen a el)
-	// Si aún no es el mayor incluso despues de eso, quitar el maximo derecho y sera el mayor
+	// Ways for a candidate to win:
+	// If it is not the one with the most votes, remove all candidates before it so undecided votes are added to it.
+	// If it is still not the largest after that, remove the maximum on the right and it will become the largest.
 	int t; cin >> t;
 	while (t--) {
 		cin >> n; cin >> c;

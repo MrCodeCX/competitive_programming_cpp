@@ -14,7 +14,7 @@ int main() {
 		int counter_2 = 0;
 		int ref = array_a[0];
 		int pot = -1;
-		// si hay al menos 3 elementos distintos en los cuales al menos 1 sea distinto, se puede
+		// If there are at least 3 elements and at least one is different, it is possible.
 		for (int i = 1; i < n; i++)
 		{
 			if (array_a[i] != ref) counter_2++;

@@ -30,7 +30,7 @@ int main() {
 		{
 			cin >> array_a[i];
 		}
-		// Algoritmo Voraz positivo y negativo, solo importa el maximo positivo y el maximo negativo al que se puede llegar en cada posicion, a partir de el
+		// Positive and negative greedy algorithm: only the maximum positive and maximum negative reachable at each position matter.
 		// Llegar al maximo hasta posicion i
 		vect_positive[0] = abs_(array_a[0]);
 		// Llegar al minimo hasta posicion i

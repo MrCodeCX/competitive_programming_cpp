@@ -1,6 +1,23 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
+
+// Problem: Codeforces Round 940 (Div. 2), B - A BIT of a Construction
+// Link: https://codeforces.com/contest/1957/problem/B
+//
+// Summary:
+// For each test case, construct an array of n non-negative integers whose sum is
+// exactly k. Among all valid arrays, the goal is to maximize the number of
+// 1 bits in the bitwise OR of all array elements. Any array that reaches that
+// maximum is accepted.
+//
+// Solve:
+// If n is 1, the only possible array is [k]. Otherwise, this solution puts all
+// useful value into the first two positions and fills the rest with zeroes. The
+// helper builds a number sol <= k that keeps as many low bits set as possible,
+// because a dense low-bit pattern maximizes the popcount of the final OR. The
+// output is sol, k - sol, and then zeroes; the sum remains k, and the OR keeps
+// the intended set bits.
  
 int array_n[10000];
 int array_k[10000];

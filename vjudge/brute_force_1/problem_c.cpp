@@ -6,8 +6,8 @@ using namespace std;
 #define B 123456
 #define C 1234
 
-// Para varios coeficientes es mejor iterar un array (dp) de cada formacion posible O(n)
-// Para pocos coeficientes es mejor iterar sobre ellos y verificar el residuo respecto al ultimo O(A*B)
+// With many coefficients, it is better to iterate a DP array over every possible formation in O(n).
+// With few coefficients, it is better to iterate over them and check the remainder against the last one in O(A*B).
 
 int main() {
     size_t n; cin >> n;

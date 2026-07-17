@@ -9,7 +9,7 @@ int tope_sup(double n) {
 int main() {
 	int t; cin >> t;
 	while (t--) {
-		//import la cantidad de 2x2 5x3 cben 2 de 2por2, las de 1 no se ven afectados, residual y sumar
+		// Count 2x2 blocks: each 5x3 screen fits two 2x2 blocks. Ones do not affect this; add the residual.
 		int x; cin >> x; int y; cin >> y;
 		int screen = tope_sup((double)y / 2.0);
 		int res_1 = (screen * 15) - y * 4;

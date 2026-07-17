@@ -10,15 +10,16 @@ size_t get_cypher(size_t num) {
 }
 
 int main() {
-    // No importa el orden debido a que la operacion y condicion es simetrica, pero solo se toman los pares de la forma i<j, por lo que cantidad de pares = n_i^2 / 2 en vez de n_i^2
+    // Order does not matter because the operation and condition are symmetric.
+    // Only pairs with i < j are counted, so the number of pairs is n_i^2 / 2 instead of n_i^2.
 
-    // Para numeros con igual cantidad de cifras, se identifican los casos
-    // Caso a: 1xxxx 1yyyy, cumple la operacion
-    // Caso b: 1xxxx 0yyyy, no cumple la operacion
-    // Caso c: 0xxxx 0yyyy, nunca se considera pues no entra dentro de este rango de cifras
-    // En el caso del numero 0, se le tomaria en cuenta cantidad de cifras 0 (aunque no lo piden)
+    // For numbers with the same number of bits, the cases are:
+    // Case a: 1xxxx 1yyyy, satisfies the operation.
+    // Case b: 1xxxx 0yyyy, does not satisfy the operation.
+    // Case c: 0xxxx 0yyyy, never considered because it is outside this bit-length range.
+    // For the number 0, its bit-length would be treated as 0, although the problem does not ask for it.
     
-    // La cantidad de pares sera igual a SUM (n_i^2)/2, siendo n_i la cantidad de numeros con i cifras
+    // The number of pairs is SUM (n_i^2)/2, where n_i is the number of values with i bits.
 
     size_t t; cin >> t;
     for (size_t iter_t = 0; iter_t < t; iter_t++)

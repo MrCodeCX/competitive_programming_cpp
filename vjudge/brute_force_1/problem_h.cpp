@@ -2,8 +2,8 @@
 
 using namespace std;
 
-// Para un determinado numero x, su posicion seria (x / n) * (n-1) + x % n = k
-// Siempre x % n != 0
+// For a given number x, its position would be (x / n) * (n-1) + x % n = k.
+// Always x % n != 0.
 //      (x / n) + (x % n / (n-1)) = k / (n-1)
 // if k % (n-1) == 0 -> (x % n / (n-1)) = 1
 //      x = (k/(n-1))*n - 1

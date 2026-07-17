@@ -4,14 +4,14 @@
 
 using namespace std;
 
-// Si se ordena el array el problema queda resuelto
-// Debido al rango de sus numeros se puede aplicar 
-// radix_sort con complejidad O(n)
-// algorithm sort con complejidad O(n*ln(n))
+// If the array is sorted, the problem is solved.
+// Due to the range of the numbers, these approaches are possible:
+// radix_sort with O(n) complexity
+// algorithm sort with O(n*ln(n)) complexity
 
-// Una vez ordenado el array para k > 0, 
-// basta saber que el numero k-esimo sea menor que el que le sigue, entonces ese mismo numero cumple
-// n_array[0] ... <= n_array[k-1], entonces si n_array[k] > n_array[k-1]
+// Once the array is sorted and k > 0,
+// it is enough to know that the k-th number is smaller than the next one; then that same number works.
+// n_array[0] ... <= n_array[k-1], so if n_array[k] > n_array[k-1]
 // n_array[0] ... n_array[k-1] <= n_array[k-1]
 
 int main() {

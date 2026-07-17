@@ -6,17 +6,18 @@ int array_a[55] = { 0 };
 int main() {
 	int t; cin >> t;
 	while (t--) {
-		// si son numeros grandex xxx + yyy su suma de cada digito msiempre sumara un 1 al siguiente es decir 1000 + ((x + y + 1)%10) * 100 + ((x + y + 1)%10) * 10 + ((x + y)%10) 
-		// Su primer digito se debe poder formar con (x1 + y1)%10, no se puede para 9
-		// el segundo digito se debe poder formar con ((x2 + y2 + 1)%10) se puede para todos
-		// exepto el 0 xq 5 +5 +1 %10 es 1, solo el ultimo puede ser 0
-		// Todo digito se puede formar con ((x2 + y2 + 1)%10) para numeros grandes
-		// porque con (x1 + y1)%10 se puede formar todo digito exepto 8
-		// La suma (x + y + 1) // 10 siempre es 1, lo que pasa al siguiente, por lo que cada digito tiene la regla de formacion 
-		// Ambos numeros grandes deben tener la misma cantidad de digitos, si uno es 9xx y el otro 0yy puede que no se cumpla
-		// para 1001 no se cumple
-		// es necesario segundo digito distinto de cero ? 5555 5555
-		// Minimo numero grande que cumple es de la forma 111111s0
+		// For large numbers xxx + yyy, each digit sum always carries 1 to the next digit:
+		// 1000 + ((x + y + 1)%10) * 100 + ((x + y + 1)%10) * 10 + ((x + y)%10).
+		// The first digit must be formable with (x1 + y1)%10; this is not possible for 9.
+		// The second digit must be formable with ((x2 + y2 + 1)%10), which works for all digits
+		// except 0, because (5 + 5 + 1) % 10 is 1; only the last digit can be 0.
+		// Every digit can be formed with ((x2 + y2 + 1)%10) for large numbers
+		// because (x1 + y1)%10 can form every digit except 8.
+		// The carry (x + y + 1) // 10 is always 1, so each digit follows this formation rule.
+		// Both large numbers must have the same number of digits; if one is 9xx and the other 0yy, it may fail.
+		// For 1001 it does not hold.
+		// Is a non-zero second digit necessary? 5555 5555
+		// The minimum large number that works has the form 111111s0.
 		long long x; cin >> x;
 		string s = to_string(x);
 		long long cota = 0;
