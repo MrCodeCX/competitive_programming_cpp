@@ -1,6 +1,6 @@
 # Competitive Programming C++
 
-A curated archive of standalone C++ competitive programming solutions with
+A collection of standalone C++ competitive programming solutions with
 problem summaries, solution notes, source code, and runnable sample tests.
 
 **Live demo:** [mrcodecx.github.io/competitive_programming_cpp](https://mrcodecx.github.io/competitive_programming_cpp/)
