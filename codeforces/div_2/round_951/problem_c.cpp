@@ -1,53 +1,57 @@
 #include <iostream>
-#include <cmath>
+#include <numeric>
+#include <vector>
 using namespace std;
- 
-int n_primos = 8;
-int array_primos[] = { 2,3,5,7,11,13,17,19 };
-int array_k[55];
-int array_k_aux[55];
-int mcm(int s) {
-	// Get the LCM of array_k.
-	int mcm_ = 1;
-	for (int j = 0; j < n_primos; j++)
-	{
-		bool value_primo = false;
-		do
-		{
-			value_primo = false;
-			for (int i = 0; i < s; i++)
-			{
-				if (array_k[i] % array_primos[j] == 0) {
-					array_k[i] = array_k[i] / array_primos[j];
-					value_primo = true;
-				}
-			}
-			if (value_primo) mcm_ *= array_primos[j];
-		} while (value_primo);
-	}
-	return mcm_;
-}
- 
+
+// Problem: Codeforces Round 951 (Div. 2), C - Earning on Bets
+// Link: https://codeforces.com/contest/1979/problem/C
+//
+// Summary:
+// For each test case, there are n possible betting outcomes. If outcome i wins,
+// every coin placed on it is multiplied by k[i]. We need choose a positive
+// number of coins for each outcome so that, no matter which outcome wins, the
+// payout is strictly greater than the total number of coins placed. If no valid
+// distribution exists, print -1.
+//
+// Solve:
+// Let total be the sum of all placed coins. For every outcome i, we need
+// coins[i] * k[i] > total. A useful construction is to take the LCM of all k[i]
+// and set coins[i] = LCM / k[i]. Then every possible payout is exactly LCM.
+// This works only if the total number of placed coins is smaller than LCM,
+// which is equivalent to sum(LCM / k[i]) < LCM.
+
 int main() {
 	int t; cin >> t;
 	while (t--) {
 		int n; cin >> n;
-		double sum = 0;
+		vector<int> array_k(n);
 		for (int i = 0; i < n; i++)
 		{
 			cin >> array_k[i];
-			array_k_aux[i] = array_k[i];
-			sum += 1.0 / (double)array_k[i];
 		}
-		if (sum < 0.9999999) {
-			int mc = mcm(n);
-			for (int i = 0; i < n; i++)
+
+		long long lcm_value = 1;
+		for (int value : array_k)
+		{
+			lcm_value = lcm(lcm_value, (long long)value);
+		}
+
+		vector<int> array_coins(n);
+		long long total = 0;
+		for (int i = 0; i < n; i++)
+		{
+			array_coins[i] = (int)(lcm_value / array_k[i]);
+			total += array_coins[i];
+		}
+
+		if (total >= lcm_value) cout << -1 << endl;
+		else {
+			for (int coin : array_coins)
 			{
-				cout << (mc / array_k_aux[i]) << " ";
+				cout << coin << " ";
 			}
 			cout << endl;
 		}
-		else cout << -1 << endl;
 	}
 	return 0;
 }
